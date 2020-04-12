@@ -7,7 +7,7 @@ import java.util.Map;
  * Список поддерживаемых операций
  * @author Lysenkov Vladimir
  */
-public enum Operations {
+public enum OperationsList {
     //Операции оплаты
     /** Продажа */
     Sale (1),
@@ -73,21 +73,21 @@ public enum Operations {
     SetCurrentPrinter (816);
 
     private final int mOperationValue;
-    private final static Map<Integer, Operations> mStaticValuesMap = new HashMap<>();
+    private final static Map<Integer, OperationsList> mStaticValuesMap = new HashMap<>();
 
     static {
-        for(Operations operation : Operations.values()) {
+        for(OperationsList operation : OperationsList.values()) {
             mStaticValuesMap.put(operation.mOperationValue, operation);
         }
     }
 
-    Operations(int value) {
+    OperationsList(int value) {
         mOperationValue = value;
     }
-    public static Operations valueOf(int operationValue) {
+    public static OperationsList getValue(int operationValue) {
         return mStaticValuesMap.get(operationValue);
     }
-    public int getValue() {
+    public int getNumber() {
         return mOperationValue;
     }
 }
