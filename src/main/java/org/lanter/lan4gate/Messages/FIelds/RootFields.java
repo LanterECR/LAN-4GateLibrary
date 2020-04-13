@@ -6,7 +6,7 @@ package org.lanter.lan4gate.Messages.Fields;
  */
 public class RootFields {
     /** Имя поля класса сообщения */
-    public static final String CLASS = "_class";
+    public static final String CLASS = "__class";
     /** Имя поля объекта сообщения */
-    public static final String OBJECT = "_object";
+    public static final String OBJECT = "__object";
 }

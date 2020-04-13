@@ -8,6 +8,7 @@ import java.util.Map;
  * @author Lysenkov Vladimir
  */
 public enum OperationsList {
+    NoOperation(0),
     //Операции оплаты
     /** Продажа */
     Sale (1),
