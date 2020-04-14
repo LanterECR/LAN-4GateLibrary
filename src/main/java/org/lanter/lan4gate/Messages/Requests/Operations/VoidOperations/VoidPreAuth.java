@@ -8,7 +8,7 @@ public class VoidPreAuth extends Request {
     public VoidPreAuth() {
         setOperationCode(OperationsList.VoidPreAuth);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.CardDataEnc);
 
         addOptionalFields(RequestFieldsList.TransactionID);

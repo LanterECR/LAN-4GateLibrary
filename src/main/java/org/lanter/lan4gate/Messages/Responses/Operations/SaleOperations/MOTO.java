@@ -8,7 +8,7 @@ public class MOTO extends Response {
     public MOTO(){
         setOperationCode(OperationsList.MOTO);
 
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addMandatoryFields(ResponseFieldsList.Status);
         addMandatoryFields(ResponseFieldsList.TotalAmount);
         addMandatoryFields(ResponseFieldsList.CurrencyCode);

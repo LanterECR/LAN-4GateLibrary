@@ -7,6 +7,6 @@ import org.lanter.lan4gate.Messages.Requests.Request;
 public class Settlement extends Request {
     public Settlement() {
         setOperationCode(OperationsList.Settlement);
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
     }
 }

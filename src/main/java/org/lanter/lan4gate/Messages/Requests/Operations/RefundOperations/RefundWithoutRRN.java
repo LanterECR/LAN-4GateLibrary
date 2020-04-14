@@ -8,8 +8,9 @@ public class RefundWithoutRRN extends Request {
     public RefundWithoutRRN() {
         setOperationCode(OperationsList.RefundWithoutRRN);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
+
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
     }
 }

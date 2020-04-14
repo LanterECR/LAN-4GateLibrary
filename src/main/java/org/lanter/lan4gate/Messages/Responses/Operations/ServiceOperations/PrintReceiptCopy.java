@@ -10,7 +10,7 @@ import org.lanter.lan4gate.Messages.Responses.ResponseBuilder;
 public class PrintReceiptCopy extends Response {
     public PrintReceiptCopy(OperationsList operationCode) {
         setOperationCode(OperationsList.PrintReceiptCopy);
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addMandatoryFields(ResponseFieldsList.OriginalOperationCode);
         addMandatoryFields(ResponseFieldsList.OriginalOperationStatus);
 

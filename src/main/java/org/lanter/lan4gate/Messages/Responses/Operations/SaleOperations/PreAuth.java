@@ -10,7 +10,7 @@ public class PreAuth extends Response {
     public PreAuth() {
         setOperationCode(OperationsList.PreAuth);
 
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addMandatoryFields(ResponseFieldsList.Status);
         addMandatoryFields(ResponseFieldsList.TotalAmount);
         addMandatoryFields(ResponseFieldsList.CurrencyCode);

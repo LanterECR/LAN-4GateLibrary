@@ -8,10 +8,10 @@ public class Refund extends Request {
     public Refund() {
         setOperationCode(OperationsList.Refund);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
 
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addOptionalFields(RequestFieldsList.RRN);
         addOptionalFields(RequestFieldsList.TransactionID);
     }

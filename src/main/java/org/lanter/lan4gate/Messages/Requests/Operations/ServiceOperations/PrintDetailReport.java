@@ -7,6 +7,6 @@ import org.lanter.lan4gate.Messages.Requests.Request;
 public class PrintDetailReport extends Request {
     public PrintDetailReport() {
         setOperationCode(OperationsList.PrintDetailReport);
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
     }
 }

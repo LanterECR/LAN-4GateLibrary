@@ -8,7 +8,7 @@ public class VoidPartialSale extends Response {
     public VoidPartialSale() {
         setOperationCode(OperationsList.VoidPartialSale);
 
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addMandatoryFields(ResponseFieldsList.Status);
         addMandatoryFields(ResponseFieldsList.TotalAmount);
         addMandatoryFields(ResponseFieldsList.CurrencyCode);

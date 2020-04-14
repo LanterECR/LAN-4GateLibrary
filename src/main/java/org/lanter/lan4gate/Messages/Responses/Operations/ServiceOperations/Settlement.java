@@ -8,7 +8,7 @@ import org.lanter.lan4gate.Messages.Responses.ResponseBuilder;
 public class Settlement extends Response {
     public Settlement() {
         setOperationCode(OperationsList.Settlement);
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
 
         ResponseBuilder builder = new ResponseBuilder();
         Response operation = builder.prepareResponse(OperationsList.PrintDetailReport);

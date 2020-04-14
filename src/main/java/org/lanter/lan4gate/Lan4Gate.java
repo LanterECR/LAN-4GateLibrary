@@ -1,7 +1,7 @@
 package org.lanter.lan4gate;
 
 import org.lanter.lan4gate.Communication.Communication;
-import org.lanter.lan4gate.Communication.INewDataListener;
+import org.lanter.lan4gate.Communication.ICommunicationListener;
 import org.lanter.lan4gate.Messages.OperationsList;
 import org.lanter.lan4gate.Messages.Requests.Assembler.JSONAssembler;
 import org.lanter.lan4gate.Messages.Requests.Request;
@@ -14,9 +14,10 @@ import java.util.Set;
 /**
  * Основной класс для работы по протоколу кассового взаимодействия LAN-4Gate
  */
-public class Lan4Gate implements INewDataListener {
+public class Lan4Gate implements ICommunicationListener {
     private final Set<IResponseCallback> mResponseListeners = new HashSet<>();
     private final Set<INotificationCallback> mNotificationListeners = new HashSet<>();
+    private final Set<ICommunicationCallback> mCommunicationListeners = new HashSet<>();
     private final int mEcrNumber;
     private final Communication mCommunication = new Communication();
 
@@ -29,7 +30,7 @@ public class Lan4Gate implements INewDataListener {
      */
     public Lan4Gate(int ecrNumber) {
         mEcrNumber = ecrNumber;
-        mCommunication.addNewDataListener(this);
+        mCommunication.addCommunicationListener(this);
     }
 
     /**
@@ -49,6 +50,25 @@ public class Lan4Gate implements INewDataListener {
     public void removeResponseCallback(IResponseCallback callback) {
         mResponseListeners.remove(callback);
     }
+
+    /**
+     * Добавляет к списку получаетелей событий соединения новый callback
+     *
+     * @param callback Объект, реализующий интерфейс {@link ICommunicationCallback}
+     */
+    public void addCommunicationCallback(ICommunicationCallback callback) {
+        mCommunicationListeners.add(callback);
+    }
+
+    /**
+     * Удаляет из списк получаетелей событий соединения имеющийся callback
+     *
+     * @param callback Зарегистрированный объект, реализующий интерфейс {@link ICommunicationCallback}
+     */
+    public void removeCommunicationCallback(ICommunicationCallback callback) {
+        mResponseListeners.remove(callback);
+    }
+
 
     /**
      * Добавляет к списку получаетелей события {@link INotification} новый callback
@@ -98,13 +118,40 @@ public class Lan4Gate implements INewDataListener {
      * @return Строка формата "127.0.0.1"
      */
     public String getIP() { return "127.0.0.1"; }
+
     /**
-     * Запускает сетевое взаимодействие в отдельном потоке
+     * Запускает сетевое взаимодействие в отдельном потоке.
+     * Неблокирующий метод.
      */
     public void start() {
         mCommunication.startMonitoring();
     }
 
+    /**
+     * Возвращает состояние потока, который мониторит соединение
+     * @return True, если фоновый поток запущен
+     */
+    public boolean isStarted() {
+        return mCommunication.isStarted();
+    }
+
+    /**
+     * Возвращает состояние соединения
+     *
+     * @return True, если соединение создано и ожидает подключения
+     */
+    public boolean linkIsOpen() {
+        return mCommunication.isOpen();
+    }
+
+    /**
+     * Возвращает состояние подключения
+     *
+     * @return True, если соединение успешно подключилось
+     */
+    public boolean linkIsConnected() {
+        return mCommunication.isConnected();
+    }
     /**
      * Останавливает сетевое взаимодействие
      */
@@ -145,6 +192,34 @@ public class Lan4Gate implements INewDataListener {
             for(IResponseCallback callback : mResponseListeners) {
                 callback.newResponseMessage(response);
             }
+        }
+    }
+
+    @Override
+    public void communicationStarted() {
+        for(ICommunicationCallback callback : mCommunicationListeners) {
+            callback.communicationStarted();
+        }
+    }
+
+    @Override
+    public void communicationStopped() {
+        for(ICommunicationCallback callback : mCommunicationListeners) {
+            callback.communicationStopped();
+        }
+    }
+
+    @Override
+    public void connected() {
+        for(ICommunicationCallback callback : mCommunicationListeners) {
+            callback.connected();
+        }
+    }
+
+    @Override
+    public void disconnected() {
+        for(ICommunicationCallback callback : mCommunicationListeners) {
+            callback.disconnected();
         }
     }
 }

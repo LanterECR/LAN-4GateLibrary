@@ -8,7 +8,7 @@ public class SalesCompletion extends Response {
     public SalesCompletion() {
         setOperationCode(OperationsList.SalesCompletion);
 
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addMandatoryFields(ResponseFieldsList.Status);
         addMandatoryFields(ResponseFieldsList.TotalAmount);
         addMandatoryFields(ResponseFieldsList.CurrencyCode);

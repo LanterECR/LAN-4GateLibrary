@@ -8,7 +8,7 @@ public class SalesCompletion extends Request {
     public SalesCompletion() {
         setOperationCode(OperationsList.SalesCompletion);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
         addMandatoryFields(RequestFieldsList.TransactionID);

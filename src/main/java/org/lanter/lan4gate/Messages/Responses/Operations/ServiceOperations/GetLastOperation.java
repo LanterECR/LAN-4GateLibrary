@@ -8,7 +8,7 @@ import org.lanter.lan4gate.Messages.Responses.ResponseBuilder;
 public class GetLastOperation extends Response {
    public GetLastOperation(OperationsList operationCode) {
        setOperationCode(OperationsList.GetLastOperation);
-       addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+       addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
        addMandatoryFields(ResponseFieldsList.OriginalOperationCode);
        addMandatoryFields(ResponseFieldsList.OriginalOperationStatus);
 

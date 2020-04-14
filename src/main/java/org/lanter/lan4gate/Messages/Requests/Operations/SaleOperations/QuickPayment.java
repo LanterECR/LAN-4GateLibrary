@@ -8,7 +8,7 @@ public class QuickPayment extends Request {
     public QuickPayment() {
         setOperationCode(OperationsList.QuickPayment);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
     }
