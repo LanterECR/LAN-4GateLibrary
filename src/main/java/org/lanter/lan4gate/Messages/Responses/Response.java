@@ -12,10 +12,10 @@ public class Response implements IResponse {
     private int mEcrMerchantNumber;
     private OperationsList mOperationCode;
     private OperationsList mOriginalOperationCode;
-    private int mTotalAmount;
-    private int mAcquirerFeeAmount;
-    private int mTerminalFeeAmount;
-    private int mTipsAmount;
+    private long mTotalAmount;
+    private long mAcquirerFeeAmount;
+    private long mTerminalFeeAmount;
+    private long mTipsAmount;
     private int mCurrencyCode;
     private String mReceiptReference;
     private String mRRN;
@@ -136,38 +136,38 @@ public class Response implements IResponse {
         }
     }
 
-    public int getTotalAmount() {
+    public long getTotalAmount() {
         return mTotalAmount;
     }
 
-    public void setTotalAmount(int totalAmount) {
+    public void setTotalAmount(long totalAmount) {
         mTotalAmount = totalAmount;
         mCurrentFields.add(ResponseFieldsList.TotalAmount);
     }
 
-    public int getAcquirerFeeAmount() {
+    public long getAcquirerFeeAmount() {
         return mAcquirerFeeAmount;
     }
 
-    public void setAcquirerFeeAmount(int amountAcquirerFee) {
+    public void setAcquirerFeeAmount(long amountAcquirerFee) {
         mAcquirerFeeAmount = amountAcquirerFee;
         mCurrentFields.add(ResponseFieldsList.AcquirerFeeAmount);
     }
 
-    public int getTerminalFeeAmount() {
+    public long getTerminalFeeAmount() {
         return mTerminalFeeAmount;
     }
 
-    public void setTerminalFeeAmount(int amountTerminalFee) {
+    public void setTerminalFeeAmount(long amountTerminalFee) {
         mTerminalFeeAmount = amountTerminalFee;
         mCurrentFields.add(ResponseFieldsList.TerminalFeeAmount);
     }
 
-    public int getTipsAmount() {
+    public long getTipsAmount() {
         return mTipsAmount;
     }
 
-    public void setTipsAmount(int tipsAmount) {
+    public void setTipsAmount(long tipsAmount) {
         mTipsAmount = tipsAmount;
         mCurrentFields.add(ResponseFieldsList.TipsAmount);
     }

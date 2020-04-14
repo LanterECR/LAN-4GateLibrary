@@ -11,9 +11,9 @@ public class Request implements IRequest {
     private int mEcrNumber;
     private int mEcrMerchantNumber;
     private OperationsList mOperationCode;
-    private int mAmount;
-    private int mTipsAmount;
-    private int mCashbackAmount;
+    private long mAmount;
+    private long mTipsAmount;
+    private long mCashbackAmount;
     private int mCurrencyCode;
     private String mRRN;
     private String mAuthCode;
@@ -80,29 +80,29 @@ public class Request implements IRequest {
         return mOperationCode;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(long amount) {
         mFields.add(RequestFieldsList.Amount);
         mAmount = amount;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return mAmount;
     }
 
-    public void setTipsAmount(int tipsAmount) {
+    public void setTipsAmount(long tipsAmount) {
         mFields.add(RequestFieldsList.TipsAmount);
         mTipsAmount = tipsAmount;
     }
 
-    public int getTipsAmount() {
+    public long getTipsAmount() {
         return mTipsAmount;
     }
 
-    public void setCashbackAmount(int cashbackAmount) {
+    public void setCashbackAmount(long cashbackAmount) {
         mFields.add(RequestFieldsList.CashbackAmount);
         mCashbackAmount = cashbackAmount;
     }
-    public int getCashbackAmount() {
+    public long getCashbackAmount() {
         return mCashbackAmount;
     }
 

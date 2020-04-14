@@ -259,28 +259,28 @@ public class JSONParser {
         }
     }
     private void getFieldTotalAmount(JSONObject objectField, Response responseObject) {
-        int totalAmount = objectField.optInt(ResponseFieldsList.TotalAmount.getString(), -1);
+        long totalAmount = objectField.optLong(ResponseFieldsList.TotalAmount.getString(), -1);
         if(totalAmount != -1)
         {
             responseObject.setTotalAmount(totalAmount);
         }
     }
     private void getFieldAcquirerFeeAmount(JSONObject objectField, Response responseObject) {
-        int acquirerFeeAmount = objectField.optInt(ResponseFieldsList.AcquirerFeeAmount.getString(), -1);
+        long acquirerFeeAmount = objectField.optLong(ResponseFieldsList.AcquirerFeeAmount.getString(), -1);
         if(acquirerFeeAmount != -1)
         {
             responseObject.setAcquirerFeeAmount(acquirerFeeAmount);
         }
     }
     private void getFieldTerminalFeeAmount(JSONObject objectField, Response responseObject) {
-        int terminalFeeAmount = objectField.optInt(ResponseFieldsList.TerminalFeeAmount.getString(), -1);
+        long terminalFeeAmount = objectField.optLong(ResponseFieldsList.TerminalFeeAmount.getString(), -1);
         if(terminalFeeAmount != -1)
         {
             responseObject.setTerminalFeeAmount(terminalFeeAmount);
         }
     }
     private void getFieldTipsAmount(JSONObject objectField, Response responseObject) {
-        int tipsAmount = objectField.optInt(ResponseFieldsList.TipsAmount.getString(), -1);
+        long tipsAmount = objectField.optLong(ResponseFieldsList.TipsAmount.getString(), -1);
         if(tipsAmount != -1)
         {
             responseObject.setTipsAmount(tipsAmount);

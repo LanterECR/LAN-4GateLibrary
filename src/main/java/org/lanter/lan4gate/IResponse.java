@@ -15,10 +15,10 @@ public interface IResponse {
     int getEcrMerchantNumber();
     OperationsList getOperationCode();
     OperationsList getOriginalOperationCode();
-    int getTotalAmount();
-    int getAcquirerFeeAmount();
-    int getTerminalFeeAmount();
-    int getTipsAmount();
+    long getTotalAmount();
+    long getAcquirerFeeAmount();
+    long getTerminalFeeAmount();
+    long getTipsAmount();
     int getCurrencyCode();
     String getReceiptReference();
     String getRRN();

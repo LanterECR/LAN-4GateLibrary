@@ -16,7 +16,7 @@ public class RequestBuilder {
         mEcrNumber = ecrNumber;
     }
 
-    Request prepareRequest(OperationsList operation) throws UnsupportedOperationException {
+    public Request prepareRequest(OperationsList operation) throws UnsupportedOperationException {
         Request result;
         switch (operation) {
             case Sale: {
