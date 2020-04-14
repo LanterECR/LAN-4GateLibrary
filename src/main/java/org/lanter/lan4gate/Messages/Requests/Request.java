@@ -1,19 +1,19 @@
 package org.lanter.lan4gate.Messages.Requests;
 
+import org.lanter.lan4gate.IRequest;
 import org.lanter.lan4gate.Messages.Fields.RequestFieldsList;
 import org.lanter.lan4gate.Messages.OperationsList;
-import org.lanter.lan4gate.Messages.Requests.Checkers.RequestMandatoryFieldsChecker;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Request {
+public class Request implements IRequest {
     private int mEcrNumber;
     private int mEcrMerchantNumber;
-    private OperationsList mOperationCode = OperationsList.NoOperation;
-    private int mAmount;
-    private int mTipsAmount;
-    private int mCashbackAmount;
+    private OperationsList mOperationCode;
+    private long mAmount;
+    private long mTipsAmount;
+    private long mCashbackAmount;
     private int mCurrencyCode;
     private String mRRN;
     private String mAuthCode;
@@ -25,8 +25,33 @@ public class Request {
     private String mProviderCode;
     private String mAdditionalInfo;
 
-    private List<RequestFieldsList> mFields = new ArrayList<>();
+    private final Set<RequestFieldsList> mFields = new HashSet<>();
 
+    private final Set<RequestFieldsList> mMandatoryFieldsList = new HashSet<>();
+    private final Set<RequestFieldsList> mOptionalFieldsList = new HashSet<>();
+
+    protected final void addMandatoryFields(RequestFieldsList field) {
+        mMandatoryFieldsList.add(field);
+    }
+    protected final void addOptionalFields(RequestFieldsList field) {
+        mOptionalFieldsList.add(field);
+    }
+    public Request(){
+        addMandatoryFields(RequestFieldsList.EcrNumber);
+        addMandatoryFields(RequestFieldsList.OperationCode);
+    }
+
+    public Set<RequestFieldsList> getMandatoryFields() {
+        return mMandatoryFieldsList;
+    }
+
+    public Set<RequestFieldsList> getOptionalFields() {
+        return mOptionalFieldsList;
+    }
+
+    public boolean checkMandatoryFields() {
+        return mFields.containsAll(mMandatoryFieldsList);
+    }
 
     public void setEcrNumber(int ecrNumber) {
         mFields.add(RequestFieldsList.EcrNumber);
@@ -55,29 +80,29 @@ public class Request {
         return mOperationCode;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(long amount) {
         mFields.add(RequestFieldsList.Amount);
         mAmount = amount;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return mAmount;
     }
 
-    public void setTipsAmount(int tipsAmount) {
+    public void setTipsAmount(long tipsAmount) {
         mFields.add(RequestFieldsList.TipsAmount);
         mTipsAmount = tipsAmount;
     }
 
-    public int getTipsAmount() {
+    public long getTipsAmount() {
         return mTipsAmount;
     }
 
-    public void setCashbackAmount(int cashbackAmount) {
+    public void setCashbackAmount(long cashbackAmount) {
         mFields.add(RequestFieldsList.CashbackAmount);
         mCashbackAmount = cashbackAmount;
     }
-    public int getCashbackAmount() {
+    public long getCashbackAmount() {
         return mCashbackAmount;
     }
 
@@ -171,12 +196,7 @@ public class Request {
         return mAdditionalInfo;
     }
 
-    public List<RequestFieldsList> getFields() {
+    public Set<RequestFieldsList> getCurrentFields() {
         return mFields;
-    }
-
-    public boolean checkMandatoryFields() {
-        RequestMandatoryFieldsChecker checker = RequestMandatoryFieldsChecker.getChecker(mOperationCode);
-        return checker.checkMandatoryFields(mFields);
     }
 }
