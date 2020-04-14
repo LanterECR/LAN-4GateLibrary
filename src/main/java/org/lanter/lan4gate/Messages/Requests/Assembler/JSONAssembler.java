@@ -3,8 +3,10 @@ package org.lanter.lan4gate.Messages.Requests.Assembler;
 import org.json.JSONObject;
 import org.lanter.lan4gate.Messages.Fields.RequestFieldsList;
 import org.lanter.lan4gate.Messages.Fields.RootFields;
-import org.lanter.lan4gate.Messages.MessageClassList;
+import org.lanter.lan4gate.Messages.Fields.ClassFieldValuesList;
 import org.lanter.lan4gate.Messages.Requests.Request;
+
+import java.util.Set;
 
 public class JSONAssembler {
     Request mRequest;
@@ -24,7 +26,7 @@ public class JSONAssembler {
         return mJsonString;
     }
     private void createClassField(JSONObject root) {
-        root.put(RootFields.CLASS, MessageClassList.Request.getString());
+        root.put(RootFields.CLASS, ClassFieldValuesList.Request.getString());
     }
     private void createObjectField(JSONObject root) {
         JSONObject object = new JSONObject();
@@ -32,8 +34,14 @@ public class JSONAssembler {
         root.put(RootFields.OBJECT, object);
     }
     private void addObjectFields(JSONObject object) {
-        if(mRequest != null && object != null) {
-            for (RequestFieldsList field : mRequest.getFields()) {
+        if(mRequest != null) {
+            addFields(object, mRequest.getMandatoryFields());
+            addFields(object, mRequest.getOptionalFields());
+        }
+    }
+    private void addFields(JSONObject object, Set<RequestFieldsList> fields) {
+        if(fields != null && object != null) {
+            for (RequestFieldsList field : fields) {
                 switch (field)
                 {
                     case EcrNumber:{
