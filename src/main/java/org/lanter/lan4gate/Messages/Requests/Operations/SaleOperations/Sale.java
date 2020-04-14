@@ -8,7 +8,7 @@ public class Sale extends Request {
     public Sale() {
         setOperationCode(OperationsList.Sale);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
     }

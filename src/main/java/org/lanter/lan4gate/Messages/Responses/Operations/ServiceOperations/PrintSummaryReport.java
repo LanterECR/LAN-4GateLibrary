@@ -7,7 +7,7 @@ import org.lanter.lan4gate.Messages.Responses.Response;
 public class PrintSummaryReport extends Response {
     public PrintSummaryReport() {
         setOperationCode(OperationsList.PrintSummaryReport);
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
 
         addMandatoryFields(ResponseFieldsList.TerminalID);
 

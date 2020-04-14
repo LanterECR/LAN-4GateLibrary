@@ -8,7 +8,7 @@ public class FullVoid extends Request {
     public FullVoid() {
         setOperationCode(OperationsList.Void);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addOptionalFields(RequestFieldsList.ReceiptReference);
     }
 }

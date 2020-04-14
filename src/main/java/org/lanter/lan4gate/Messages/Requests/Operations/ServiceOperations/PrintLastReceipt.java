@@ -7,6 +7,6 @@ import org.lanter.lan4gate.Messages.Requests.Request;
 public class PrintLastReceipt extends Request {
    public PrintLastReceipt() {
        setOperationCode(OperationsList.PrintLastReceipt);
-       addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+       addOptionalFields(RequestFieldsList.EcrMerchantNumber);
    }
 }

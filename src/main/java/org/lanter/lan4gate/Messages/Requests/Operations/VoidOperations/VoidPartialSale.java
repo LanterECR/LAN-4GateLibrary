@@ -8,7 +8,7 @@ public class VoidPartialSale extends Request {
     public VoidPartialSale() {
         setOperationCode(OperationsList.VoidPartialSale);
 
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.ReceiptReference);
 
         addOptionalFields(RequestFieldsList.Amount);

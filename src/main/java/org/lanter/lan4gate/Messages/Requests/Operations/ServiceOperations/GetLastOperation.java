@@ -7,6 +7,6 @@ import org.lanter.lan4gate.Messages.Requests.Request;
 public class GetLastOperation extends Request {
    public GetLastOperation() {
        setOperationCode(OperationsList.GetLastOperation);
-       addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+       addOptionalFields(RequestFieldsList.EcrMerchantNumber);
    }
 }

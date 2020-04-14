@@ -7,7 +7,7 @@ import org.lanter.lan4gate.Messages.Requests.Request;
 public class PreAuth extends Request {
     public PreAuth() {
         setOperationCode(OperationsList.PreAuth);
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
         addMandatoryFields(RequestFieldsList.TransactionID);

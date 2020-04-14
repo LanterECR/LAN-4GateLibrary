@@ -19,7 +19,7 @@ public class Communication {
     private int mPort = 20501;
     private String mIP;
 
-    private final Set<INewDataListener> mNewDataListeners = new HashSet<>();
+    private final Set<ICommunicationListener> mNewDataListeners = new HashSet<>();
     private void setCommunicationType(CommunicationType type) {
         mCommunicationType = type;
     }
@@ -30,15 +30,26 @@ public class Communication {
     private void setIP(String ip) { mIP = ip; }
     private String getIP() { return mIP; }
 
-    public void addNewDataListener(INewDataListener listener) {
+    public void addCommunicationListener(ICommunicationListener listener) {
         mNewDataListeners.add(listener);
     }
-    public void removeNewDataListener(INewDataListener listener) {
+    public void removeCommunicationListener(ICommunicationListener listener) {
         mNewDataListeners.remove(listener);
     }
+
     public void setPort(int port) { mPort = port; }
     public int getPort() { return mPort; }
-
+    public boolean isStarted() {
+        boolean threadIsAlive = mMonitoringThread != null && mMonitoringThread.isAlive();
+        return threadIsAlive;
+    }
+    public boolean isOpen () {
+        boolean selectorIsOpen = mConnectionSelector != null && mConnectionSelector.isOpen();
+        return  selectorIsOpen;
+    }
+    public boolean isConnected() {
+        return mRegisteredConnection != null;
+    }
     public void addSendData(String data) {
         mDataForSend.add(StandardCharsets.UTF_8.encode(data));
     }
@@ -116,6 +127,7 @@ public class Communication {
                 }
             }
             mConnectionSelector.close();
+            notifyCommunicationStopped();
         }
         catch (Exception ignored)
         {
@@ -124,6 +136,7 @@ public class Communication {
     }
     private void runSelector() throws IOException
     {
+        notifyCommunicationStarted();
         while(!Thread.currentThread().isInterrupted())
         {
             int count = mConnectionSelector.selectNow();
@@ -161,6 +174,7 @@ public class Communication {
         closeConnection(key);
         mDataForSend.clear();
         mRegisteredConnection = null;
+        notifyDisconnected();
     }
     private void closeConnection(SelectionKey key) throws IOException{
         if (key.channel().isRegistered())
@@ -173,6 +187,7 @@ public class Communication {
     {
         if(mRegisteredConnection == null) {
             mRegisteredConnection = key;
+            notifyConnected();
         } else {
             closeConnection(key);
         }
@@ -233,9 +248,57 @@ public class Communication {
         }
         return "";
     }
-    private void notifyNewData(String newData) {
-        for (INewDataListener listener : mNewDataListeners) {
-            listener.newData(newData);
-        }
+    private void notifyNewData(final String newData) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.newData(newData);
+                }
+            }
+        }).start();
+    }
+    private void notifyCommunicationStarted() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.communicationStarted();
+                }
+            }
+        }).start();
+    }
+
+    private void notifyCommunicationStopped() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.communicationStopped();
+                }
+            }
+        }).start();
+    }
+
+    private void notifyConnected() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.connected();
+                }
+            }
+        }).start();
+    }
+
+    private void notifyDisconnected() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.disconnected();
+                }
+            }
+        }).start();
     }
 }

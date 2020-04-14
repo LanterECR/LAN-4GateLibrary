@@ -7,11 +7,11 @@ import org.lanter.lan4gate.Messages.Requests.Request;
 public class FastTrack extends Request {
     public FastTrack() {
         setOperationCode(OperationsList.FastTrack);
-        addMandatoryFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.Amount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
         addMandatoryFields(RequestFieldsList.OpenTags);
 
         addOptionalFields(RequestFieldsList.EncTags);
+        addOptionalFields(RequestFieldsList.EcrMerchantNumber);
     }
 }

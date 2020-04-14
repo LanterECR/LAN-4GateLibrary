@@ -8,7 +8,7 @@ public class PrintDetailReport extends Response {
     public PrintDetailReport() {
         setOperationCode(OperationsList.PrintDetailReport);
 
-        addMandatoryFields(ResponseFieldsList.EcrMerchantNumber);
+        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addMandatoryFields(ResponseFieldsList.TerminalID);
 
         addOptionalFields(ResponseFieldsList.TotalAmount);
