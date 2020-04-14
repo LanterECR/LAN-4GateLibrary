@@ -4,12 +4,16 @@ import org.lanter.lan4gate.Messages.OperationsList;
 import org.lanter.lan4gate.Messages.Responses.Operations.RefundOperations.Refund;
 import org.lanter.lan4gate.Messages.Responses.Operations.RefundOperations.RefundWithoutRRN;
 import org.lanter.lan4gate.Messages.Responses.Operations.SaleOperations.*;
+import org.lanter.lan4gate.Messages.Responses.Operations.ServiceOperations.*;
 import org.lanter.lan4gate.Messages.Responses.Operations.VoidOperations.FullVoid;
 import org.lanter.lan4gate.Messages.Responses.Operations.VoidOperations.VoidPartialSale;
 import org.lanter.lan4gate.Messages.Responses.Operations.VoidOperations.VoidPreAuth;
 
 public class ResponseBuilder {
     public Response prepareResponse(OperationsList operation) {
+        return prepareResponse(operation, OperationsList.NoOperation);
+    }
+    public Response prepareResponse(OperationsList operation, OperationsList originalOperation) {
         Response result = null;
         switch (operation) {
             case Sale: {
@@ -56,23 +60,78 @@ public class ResponseBuilder {
                 result = new RefundWithoutRRN();
                 break;
             }
-            case Registration:
-            case TestCommunication:
-            case Test:
-            case PrintLastReceipt:
-            case GetLastOperation:
-            case PrintReceiptCopy:
-            case PrintDetailReport:
-            case PrintSummaryReport:
-            case Settlement:
-            case KeyDownload:
-            case Initialization:
-            case UpdateSW:
-            case PrintCommsInfo:
-            case PrintSoftInfo:
-            case FinalizeTransaction:
-            case GetCurrentPrinter:
-            case SetCurrentPrinter:
+            case Registration: {
+                result = new Registration();
+                break;
+            }
+            case TestCommunication:{
+                result = new TestCommunication();
+                break;
+            }
+            case Test: {
+                result = new Test();
+                break;
+            }
+            case PrintLastReceipt: {
+                result = new PrintLastReceipt(originalOperation);
+                break;
+            }
+            case GetLastOperation: {
+                result = new GetLastOperation(originalOperation);
+                break;
+            }
+            case PrintReceiptCopy: {
+                result = new PrintReceiptCopy(originalOperation);
+                break;
+            }
+            case PrintDetailReport: {
+                result = new PrintDetailReport();
+                break;
+            }
+            case PrintSummaryReport: {
+                result = new PrintSummaryReport();
+                break;
+            }
+            case Settlement: {
+                result = new Settlement();
+                break;
+            }
+            case KeyDownload: {
+                result = new KeyDownload();
+                break;
+            }
+            case Initialization: {
+                result = new Initialization();
+                break;
+            }
+            case UpdateSW: {
+                result = new UpdateSW();
+                break;
+            }
+            case PrintCommsInfo: {
+                result = new PrintCommsInfo();
+                break;
+            }
+            case PrintSoftInfo: {
+                result = new PrintSoftInfo();
+                break;
+            }
+            case FinalizeTransaction: {
+                result = new FinalizeTransaction();
+                break;
+            }
+            case GetCurrentPrinter: {
+                result = new GetCurrentPrinter();
+                break;
+            }
+            case SetCurrentPrinter: {
+                result = new SetCurrentPrinter();
+                break;
+            }
+            case SelfTest: {
+                result = new SelfTest();
+                break;
+            }
             default: {
                 break;
             }

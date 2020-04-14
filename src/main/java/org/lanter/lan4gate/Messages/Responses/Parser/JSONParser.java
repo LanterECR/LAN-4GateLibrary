@@ -521,7 +521,7 @@ public class JSONParser {
         responseObject.setSalesArray(parseArray(ResponseFieldsList.SalesArray.getString(), objectField));
     }
     private void getFieldVoidArray(JSONObject objectField, Response responseObject) {
-        responseObject.setVoidArray(parseArray(ResponseFieldsList.SalesArray.getString(), objectField));
+        responseObject.setVoidArray(parseArray(ResponseFieldsList.VoidArray.getString(), objectField));
     }
     private void getFieldRefundArray(JSONObject objectField, Response responseObject) {
         responseObject.setRefundArray(parseArray(ResponseFieldsList.RefundArray.getString(), objectField));

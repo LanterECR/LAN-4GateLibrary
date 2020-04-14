@@ -4,6 +4,7 @@ import org.lanter.lan4gate.Messages.OperationsList;
 import org.lanter.lan4gate.Messages.Requests.Operations.RefundOperations.Refund;
 import org.lanter.lan4gate.Messages.Requests.Operations.RefundOperations.RefundWithoutRRN;
 import org.lanter.lan4gate.Messages.Requests.Operations.SaleOperations.*;
+import org.lanter.lan4gate.Messages.Requests.Operations.ServiceOperations.*;
 import org.lanter.lan4gate.Messages.Requests.Operations.VoidOperations.FullVoid;
 import org.lanter.lan4gate.Messages.Requests.Operations.VoidOperations.VoidPartialSale;
 import org.lanter.lan4gate.Messages.Requests.Operations.VoidOperations.VoidPreAuth;
@@ -62,23 +63,78 @@ public class RequestBuilder {
                 result = new RefundWithoutRRN();
                 break;
             }
-            case Registration:
-            case TestCommunication:
-            case Test:
-            case PrintLastReceipt:
-            case GetLastOperation:
-            case PrintReceiptCopy:
-            case PrintDetailReport:
-            case PrintSummaryReport:
-            case Settlement:
-            case KeyDownload:
-            case Initialization:
-            case UpdateSW:
-            case PrintCommsInfo:
-            case PrintSoftInfo:
-            case FinalizeTransaction:
-            case GetCurrentPrinter:
-            case SetCurrentPrinter:
+            case Registration: {
+                result = new Registration();
+                break;
+            }
+            case TestCommunication:{
+                result = new TestCommunication();
+                break;
+            }
+            case Test: {
+                result = new Test();
+                break;
+            }
+            case PrintLastReceipt: {
+                result = new PrintLastReceipt();
+                break;
+            }
+            case GetLastOperation: {
+                result = new GetLastOperation();
+                break;
+            }
+            case PrintReceiptCopy: {
+                result = new PrintReceiptCopy();
+                break;
+            }
+            case PrintDetailReport: {
+                result = new PrintDetailReport();
+                break;
+            }
+            case PrintSummaryReport: {
+                result = new PrintSummaryReport();
+                break;
+            }
+            case Settlement: {
+                result = new Settlement();
+                break;
+            }
+            case KeyDownload: {
+                result = new KeyDownload();
+                break;
+            }
+            case Initialization: {
+                result = new Initialization();
+                break;
+            }
+            case UpdateSW: {
+                result = new UpdateSW();
+                break;
+            }
+            case PrintCommsInfo: {
+                result = new PrintCommsInfo();
+                break;
+            }
+            case PrintSoftInfo: {
+                result = new PrintSoftInfo();
+                break;
+            }
+            case FinalizeTransaction: {
+                result = new FinalizeTransaction();
+                break;
+            }
+            case GetCurrentPrinter: {
+                result = new GetCurrentPrinter();
+                break;
+            }
+            case SetCurrentPrinter: {
+                result = new SetCurrentPrinter();
+                break;
+            }
+            case SelfTest: {
+                result = new SelfTest();
+                break;
+            }
             default: {
                 throw new UnsupportedOperationException("Operation " + operation.name() + " not supported yet");
             }

@@ -8,6 +8,7 @@ import java.util.Map;
  * @author Lysenkov Vladimir
  */
 public enum OperationsList {
+    NoOperation(-1),
     //Операции оплаты
     /** Продажа */
     Sale (1),
@@ -70,7 +71,9 @@ public enum OperationsList {
     /** Получение сведений о используемом устройстве печати - терминал или ECR*/
     GetCurrentPrinter (815),
     /** Установка текущего используемого устройства печати - терминал или ECR*/
-    SetCurrentPrinter (816);
+    SetCurrentPrinter (816),
+    /** Самопроверка терминала  */
+    SelfTest(817);
 
     private final int mOperationValue;
     private final static Map<Integer, OperationsList> mStaticValuesMap = new HashMap<>();

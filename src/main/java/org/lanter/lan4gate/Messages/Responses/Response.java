@@ -61,8 +61,14 @@ public class Response implements IResponse {
     protected final void addMandatoryFields(ResponseFieldsList field) {
         mMandatoryFieldsList.add(field);
     }
+    protected final void addMandatoryFieldsGroup(Set<ResponseFieldsList> fieldsGroup) {
+        mMandatoryFieldsList.addAll(fieldsGroup);
+    }
     protected final void addOptionalFields(ResponseFieldsList field) {
         mOptionalFieldsList.add(field);
+    }
+    protected final void addOptionalFieldsGroup(Set<ResponseFieldsList> fieldsGroup) {
+        mOptionalFieldsList.addAll(fieldsGroup);
     }
 
     protected final void clearMandatoryFields() { mMandatoryFieldsList.clear(); }
@@ -71,6 +77,7 @@ public class Response implements IResponse {
     public Response(){
         addMandatoryFields(ResponseFieldsList.EcrNumber);
         addMandatoryFields(ResponseFieldsList.OperationCode);
+        addMandatoryFields(ResponseFieldsList.Status);
     }
 
     public Set<ResponseFieldsList> getMandatoryFields() {
