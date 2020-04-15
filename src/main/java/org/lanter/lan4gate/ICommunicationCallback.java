@@ -2,11 +2,11 @@ package org.lanter.lan4gate;
 
 public interface ICommunicationCallback {
 
-    void communicationStarted();
+    void communicationStarted(Lan4Gate initiator);
 
-    void communicationStopped();
+    void communicationStopped(Lan4Gate initiator);
 
-    void connected();
+    void connected(Lan4Gate initiator);
 
-    void disconnected();
+    void disconnected(Lan4Gate initiator);
 }

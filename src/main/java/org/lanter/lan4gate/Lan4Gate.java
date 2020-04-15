@@ -93,7 +93,7 @@ public class Lan4Gate implements ICommunicationListener {
         if(parser.parse(data)) {
             IResponse response = parser.getResponse();
             for(IResponseCallback callback : mResponseListeners) {
-                callback.newResponseMessage(response);
+                callback.newResponseMessage(response, this);
             }
         }
     }
@@ -101,28 +101,28 @@ public class Lan4Gate implements ICommunicationListener {
     @Override
     public void communicationStarted() {
         for(ICommunicationCallback callback : mCommunicationListeners) {
-            callback.communicationStarted();
+            callback.communicationStarted(this);
         }
     }
 
     @Override
     public void communicationStopped() {
         for(ICommunicationCallback callback : mCommunicationListeners) {
-            callback.communicationStopped();
+            callback.communicationStopped(this);
         }
     }
 
     @Override
     public void connected() {
         for(ICommunicationCallback callback : mCommunicationListeners) {
-            callback.connected();
+            callback.connected(this);
         }
     }
 
     @Override
     public void disconnected() {
         for(ICommunicationCallback callback : mCommunicationListeners) {
-            callback.disconnected();
+            callback.disconnected(this);
         }
     }
 }
