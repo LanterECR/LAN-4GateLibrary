@@ -3,10 +3,6 @@ package org.lanter.lan4gate.Messages.Fields;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Список полей запроса
- * @author Lysenkov Vladimir
- */
 public enum RequestFieldsList {
     EcrNumber ("EcrNumber"),
     EcrMerchantNumber ("EcrMerchantNumber"),

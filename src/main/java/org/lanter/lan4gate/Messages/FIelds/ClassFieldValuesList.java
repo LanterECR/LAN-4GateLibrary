@@ -3,15 +3,12 @@ package org.lanter.lan4gate.Messages.Fields;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Список классов сообщений
- */
 public enum ClassFieldValuesList {
-    /** Запрос от ECR в терминал*/
+
     Request ("LANTER::Request"),
-    /** Ответ терминала на запрос*/
+
     Response ( "LANTER::Response"),
-    /** Уведомление о событии терминала */
+
     Notification ( "LANTER::Notification");
 
     private final String mValue;
