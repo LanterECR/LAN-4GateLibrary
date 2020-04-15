@@ -15,6 +15,7 @@ public class Lan4Gate implements ICommunicationListener {
     private final Set<IResponseCallback> mResponseListeners = new HashSet<>();
     private final Set<INotificationCallback> mNotificationListeners = new HashSet<>();
     private final Set<ICommunicationCallback> mCommunicationListeners = new HashSet<>();
+    private final Set<IErrorCallback> mErrorListeners = new HashSet<>();
     private final int mEcrNumber;
     private final Communication mCommunication = new Communication();
 
@@ -45,6 +46,14 @@ public class Lan4Gate implements ICommunicationListener {
 
     public void removeNotificationCallback(INotificationCallback callback) {
         mNotificationListeners.remove(callback);
+    }
+
+    public void addErrorCallback(IErrorCallback callback) {
+        mErrorListeners.add(callback);
+    }
+
+    public void removeErrorCallback(IErrorCallback callback) {
+        mErrorListeners.remove(callback);
     }
 
     public void setPort(int port) {
@@ -123,6 +132,20 @@ public class Lan4Gate implements ICommunicationListener {
     public void disconnected() {
         for(ICommunicationCallback callback : mCommunicationListeners) {
             callback.disconnected(this);
+        }
+    }
+
+    @Override
+    public void errorMessage(String error) {
+        for(IErrorCallback callback : mErrorListeners) {
+            callback.errorMessage(error,this);
+        }
+    }
+
+    @Override
+    public void errorException(Exception exception) {
+        for(IErrorCallback callback : mErrorListeners) {
+            callback.errorException(exception, this);
         }
     }
 }

@@ -11,4 +11,8 @@ public interface ICommunicationListener {
     void connected();
 
     void disconnected();
+
+    void errorMessage(String error);
+
+    void errorException(Exception exception);
 }

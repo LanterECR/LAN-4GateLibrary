@@ -69,8 +69,9 @@ public class Communication {
                         runSelector();
                         stopSelector();
                     }
-                    catch (IOException ignored)
+                    catch (IOException exception)
                     {
+                        notifyException(exception);
                     }
                 }
             });
@@ -185,7 +186,7 @@ public class Communication {
     }
     private void addConnection(SelectionKey key) throws IOException
     {
-        if(mRegisteredConnection == null) {
+        if(allowRegisterConnection()) {
             mRegisteredConnection = key;
             notifyConnected();
         } else {
@@ -207,11 +208,17 @@ public class Communication {
     }
     private SelectionKey registerChannelFromServer(SocketChannel channel) throws IOException
     {
+
         if(channel != null)
         {
-            channel.configureBlocking(false);
-            return channel.register(mConnectionSelector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+            if(allowRegisterConnection()) {
+                channel.configureBlocking(false);
+                return channel.register(mConnectionSelector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+            } else {
+                channel.close();
+            }
         }
+
         return null;
     }
     private SocketChannel getClientChannel(SelectionKey key) throws IOException
@@ -247,6 +254,9 @@ public class Communication {
             closeClientConnection(key);
         }
         return "";
+    }
+    public boolean allowRegisterConnection() {
+        return mRegisteredConnection == null;
     }
     private void notifyNewData(final String newData) {
         new Thread(new Runnable() {
@@ -297,6 +307,26 @@ public class Communication {
             public void run() {
                 for (ICommunicationListener listener : mNewDataListeners) {
                     listener.disconnected();
+                }
+            }
+        }).start();
+    }
+    private void notifyError(String message) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.errorMessage(message);
+                }
+            }
+        }).start();
+    }
+    private void notifyException(Exception exception) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ICommunicationListener listener : mNewDataListeners) {
+                    listener.errorException(exception);
                 }
             }
         }).start();
