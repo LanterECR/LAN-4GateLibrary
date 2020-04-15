@@ -2,6 +2,7 @@ package org.lanter.lan4gate.Messages.Responses.Parser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.lanter.lan4gate.IResponse;
 import org.lanter.lan4gate.Messages.Fields.*;
 import org.lanter.lan4gate.Messages.OperationsList;
 import org.lanter.lan4gate.Messages.Requests.Request;
@@ -527,8 +528,8 @@ public class JSONParser {
         responseObject.setRefundArray(parseArray(ResponseFieldsList.RefundArray.getString(), objectField));
     }
 
-    private Set<Response> parseArray(String arrayName, JSONObject objectField) {
-        Set<Response> array = new HashSet<>();
+    private Set<IResponse> parseArray(String arrayName, JSONObject objectField) {
+        Set<IResponse> array = new HashSet<>();
         if(objectField.has(arrayName)){
             JSONArray jsonArray = objectField.getJSONArray(arrayName);
             for(int i = 0; i < jsonArray.length(); i++) {

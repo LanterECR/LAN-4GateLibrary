@@ -49,9 +49,9 @@ public class Response implements IResponse {
     private int mSalesCount;
     private int mVoidCount;
     private int mRefundCount;
-    private final Set<Response> mSalesArray = new HashSet<>();
-    private final Set<Response> mVoidArray = new HashSet<>();
-    private final Set<Response> mRefundArray = new HashSet<>();
+    private final Set<IResponse> mSalesArray = new HashSet<>();
+    private final Set<IResponse> mVoidArray = new HashSet<>();
+    private final Set<IResponse> mRefundArray = new HashSet<>();
 
     private final Set<ResponseFieldsList> mCurrentFields = new HashSet<>();
 
@@ -473,31 +473,31 @@ public class Response implements IResponse {
         mCurrentFields.add(ResponseFieldsList.RefundCount);
     }
 
-    public Set<Response> getSalesArray() {
+    public Set<IResponse> getSalesArray() {
         return mSalesArray;
     }
-    public void setSalesArray(Set<Response> salesArray) {
+    public void setSalesArray(Set<IResponse> salesArray) {
         if(!salesArray.isEmpty()) {
             mSalesArray.addAll(salesArray);
             mCurrentFields.add(ResponseFieldsList.SalesArray);
         }
     }
 
-    public Set<Response> getVoidArray() {
+    public Set<IResponse> getVoidArray() {
         return mVoidArray;
     }
 
-    public void setVoidArray(Set<Response> voidArray) {
+    public void setVoidArray(Set<IResponse> voidArray) {
         if(!voidArray.isEmpty()) {
             mVoidArray.addAll(voidArray);
             mCurrentFields.add(ResponseFieldsList.VoidArray);
         }
     }
 
-    public Set<Response> getRefundArray() {
+    public Set<IResponse> getRefundArray() {
         return mRefundArray;
     }
-    public void setRefundArray(Set<Response> refundArray) {
+    public void setRefundArray(Set<IResponse> refundArray) {
         if(!refundArray.isEmpty()) {
             mRefundArray.addAll(refundArray);
             mCurrentFields.add(ResponseFieldsList.RefundArray);
