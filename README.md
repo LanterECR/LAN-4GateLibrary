@@ -25,7 +25,7 @@ dependencies {
 ```java
 class ResponseListener implements IResponseCallback {
     @Override
-    public void newResponseMessage(IResponse response) {
+    public void newResponseMessage(IResponse response, Lan4Gate initiator) {
         for (ResponseFieldsList field : response.getCurrentFieldsList()) {
             // Код для обработки каждого поля
         }
@@ -36,22 +36,22 @@ class ResponseListener implements IResponseCallback {
 ```java
 class CommunicationListener implements ICommunicationCallback {
     @Override
-    public void communicationStarted() {
+    public void communicationStarted(Lan4Gate initiator) {
         //код для обработки запуска соединения
     }
 
     @Override
-    public void communicationStopped() {
+    public void communicationStopped(Lan4Gate initiator) {
         //код для обработки остановки соединения
     }
 
     @Override
-    public void connected() {
+    public void connected(Lan4Gate initiator) {
         //Код для обработки подключения. После данного события можно отправлять запросы
     }
 
     @Override
-    public void disconnected() {
+    public void disconnected(Lan4Gate initiator) {
         // код для обработки отключения
     }
 }
