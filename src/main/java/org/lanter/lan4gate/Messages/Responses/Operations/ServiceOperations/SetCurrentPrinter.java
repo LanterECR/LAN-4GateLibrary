@@ -7,6 +7,6 @@ import org.lanter.lan4gate.Messages.Responses.Response;
 public class SetCurrentPrinter extends Response {
     public SetCurrentPrinter() {
         setOperationCode(OperationsList.SetCurrentPrinter);
-        addMandatoryFields(ResponseFieldsList.AdditionalInfo);
+        addOptionalFields(ResponseFieldsList.AdditionalInfo);
     }
 }

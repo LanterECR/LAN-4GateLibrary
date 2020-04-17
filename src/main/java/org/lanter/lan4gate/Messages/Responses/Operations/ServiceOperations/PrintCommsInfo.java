@@ -7,6 +7,6 @@ import org.lanter.lan4gate.Messages.Responses.Response;
 public class PrintCommsInfo extends Response {
     public PrintCommsInfo() {
         setOperationCode(OperationsList.PrintCommsInfo);
-        addMandatoryFields(ResponseFieldsList.AdditionalInfo);
+        addOptionalFields(ResponseFieldsList.AdditionalInfo);
     }
 }

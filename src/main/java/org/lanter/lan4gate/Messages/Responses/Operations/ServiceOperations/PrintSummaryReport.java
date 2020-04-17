@@ -9,7 +9,7 @@ public class PrintSummaryReport extends Response {
         setOperationCode(OperationsList.PrintSummaryReport);
         addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
 
-        addMandatoryFields(ResponseFieldsList.TerminalID);
+        addOptionalFields(ResponseFieldsList.TerminalID);
 
         addOptionalFields(ResponseFieldsList.TotalAmount);
         addOptionalFields(ResponseFieldsList.CurrencyCode);

@@ -69,7 +69,7 @@ public class JSONAssembler {
                         break;
                     }
                     case CurrencyCode:{
-                        object.put(field.getString(), mRequest.getCurrencyCode());
+                        object.put(field.getString(), String.valueOf(mRequest.getCurrencyCode()));
                         break;
                     }
                     case RRN:{

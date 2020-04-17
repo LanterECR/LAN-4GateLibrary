@@ -11,8 +11,8 @@ public class PrintReceiptCopy extends Response {
     public PrintReceiptCopy(OperationsList operationCode) {
         setOperationCode(OperationsList.PrintReceiptCopy);
         addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
-        addMandatoryFields(ResponseFieldsList.OriginalOperationCode);
-        addMandatoryFields(ResponseFieldsList.OriginalOperationStatus);
+        addOptionalFields(ResponseFieldsList.OriginalOperationCode);
+        addOptionalFields(ResponseFieldsList.OriginalOperationStatus);
 
         //Так как неизвестна операция, то необходимо забрать поля из используемой
         if(!operationCode.equals(OperationsList.PrintReceiptCopy)) {

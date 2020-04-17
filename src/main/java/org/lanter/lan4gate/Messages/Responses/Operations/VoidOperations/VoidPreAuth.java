@@ -9,9 +9,8 @@ public class VoidPreAuth extends Response {
         setOperationCode(OperationsList.VoidPreAuth);
 
         addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
-        addMandatoryFields(ResponseFieldsList.Status);
-        addMandatoryFields(ResponseFieldsList.TotalAmount);
-        addMandatoryFields(ResponseFieldsList.CurrencyCode);
+        addOptionalFields(ResponseFieldsList.TotalAmount);
+        addOptionalFields(ResponseFieldsList.CurrencyCode);
 
         addOptionalFields(ResponseFieldsList.AcquirerFeeAmount);
         addOptionalFields(ResponseFieldsList.RRN);

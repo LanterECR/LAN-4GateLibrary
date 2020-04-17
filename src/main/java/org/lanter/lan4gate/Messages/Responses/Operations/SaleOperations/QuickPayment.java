@@ -9,7 +9,7 @@ public class QuickPayment extends Response {
         setOperationCode(OperationsList.QuickPayment);
 
         addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
-        addMandatoryFields(ResponseFieldsList.TotalAmount);
-        addMandatoryFields(ResponseFieldsList.CurrencyCode);
+        addOptionalFields(ResponseFieldsList.TotalAmount);
+        addOptionalFields(ResponseFieldsList.CurrencyCode);
     }
 }
