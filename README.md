@@ -73,5 +73,16 @@ class CommunicationListener implements ICommunicationCallback {
     //Запуск взаимодействия.
     gate.start();
 ```
+4. Отправить запрос:
+```java
+    //Получить предзаполненый объект запроса
+    IRequest sale = gate.getPreparedRequest(OperationsList.Sale);
+    //Установить параметры запроса
+    sale.setCurrencyCode(643);
+    sale.setAmount(100);
+    sale.setEcrMerchantNumber(1);
+    //Отправить запрос
+    gate.sendRequest(sale);
+```
 ##### Замечание: Метод start не блокирующий. Предполагается использование в цикле приложения.
 ##### Замечание: Для отправки уведомления генерируется новый поток. Желательно, чтобы получатели уведомлений не блокировали дальнейшее выполнение кода.
