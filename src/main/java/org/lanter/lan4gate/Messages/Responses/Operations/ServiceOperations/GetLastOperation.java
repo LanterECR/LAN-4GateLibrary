@@ -9,8 +9,8 @@ public class GetLastOperation extends Response {
    public GetLastOperation(OperationsList operationCode) {
        setOperationCode(OperationsList.GetLastOperation);
        addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
-       addMandatoryFields(ResponseFieldsList.OriginalOperationCode);
-       addMandatoryFields(ResponseFieldsList.OriginalOperationStatus);
+       addOptionalFields(ResponseFieldsList.OriginalOperationCode);
+       addOptionalFields(ResponseFieldsList.OriginalOperationStatus);
 
        //Так как неизвестна операция, то необходимо забрать поля из используемой
        if (!operationCode.equals(OperationsList.GetLastOperation)) {
