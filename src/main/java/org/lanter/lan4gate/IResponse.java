@@ -3,12 +3,14 @@ package org.lanter.lan4gate;
 import org.lanter.lan4gate.Messages.Fields.*;
 import org.lanter.lan4gate.Messages.OperationsList;
 
+import java.util.Map;
 import java.util.Set;
 
 public interface IResponse {
 
     Set<ResponseFieldsList> getCurrentFieldsList();
-
+    Map<ResponseFieldsList, String> packAsString();
+    Map<ResponseFieldsList, Object> packAsObject();
     int getEcrNumber();
 
     int getEcrMerchantNumber();

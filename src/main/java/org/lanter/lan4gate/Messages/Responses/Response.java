@@ -4,8 +4,7 @@ import org.lanter.lan4gate.IResponse;
 import org.lanter.lan4gate.Messages.Fields.*;
 import org.lanter.lan4gate.Messages.OperationsList;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Response implements IResponse {
     private int mEcrNumber;
@@ -90,6 +89,281 @@ public class Response implements IResponse {
 
     public Set<ResponseFieldsList> getCurrentFieldsList() {
         return mCurrentFields;
+    }
+
+    @Override
+    public Map<ResponseFieldsList, String> packAsString() {
+        Map<ResponseFieldsList, String> packedFields = new EnumMap<>(ResponseFieldsList.class);
+        for(ResponseFieldsList field : getCurrentFieldsList()) {
+            switch (field) {
+                case EcrNumber:
+                    packedFields.put(field, String.valueOf(getEcrNumber()));
+                    break;
+                case EcrMerchantNumber:
+                    packedFields.put(field, String.valueOf(getEcrMerchantNumber()));
+                    break;
+                case OperationCode:
+                    packedFields.put(field, String.valueOf(getOperationCode().getNumber()));
+                    break;
+                case OriginalOperationCode:
+                    packedFields.put(field, String.valueOf(getOriginalOperationCode().getNumber()));
+                    break;
+                case TotalAmount:
+                    packedFields.put(field, String.valueOf(getTotalAmount()));
+                    break;
+                case AcquirerFeeAmount:
+                    packedFields.put(field, String.valueOf(getAcquirerFeeAmount()));
+                    break;
+                case TerminalFeeAmount:
+                    packedFields.put(field, String.valueOf(getTerminalFeeAmount()));
+                    break;
+                case TipsAmount:
+                    packedFields.put(field, String.valueOf(getTipsAmount()));
+                    break;
+                case CurrencyCode:
+                    packedFields.put(field, String.valueOf(getCurrencyCode()));
+                    break;
+                case ReceiptReference:
+                    packedFields.put(field, getReceiptReference());
+                    break;
+                case RRN:
+                    packedFields.put(field, getRRN());
+                    break;
+                case Status:
+                    packedFields.put(field, String.valueOf(getStatus().getNumber()));
+                    break;
+                case OriginalOperationStatus:
+                    packedFields.put(field, String.valueOf(getOriginalOperationStatus().getNumber()));
+                    break;
+                case TransDateTime:
+                    packedFields.put(field, getTransDateTime());
+                    break;
+                case TerminalDateTime:
+                    packedFields.put(field, getTerminalDateTime());
+                    break;
+                case CardPAN:
+                    packedFields.put(field, getCardPAN());
+                    break;
+                case ExpireDate:
+                    packedFields.put(field, getExpireDate());
+                    break;
+                case CardholderName:
+                    packedFields.put(field, getCardholderName());
+                    break;
+                case CardholderAuthMethod:
+                    packedFields.put(field, String.valueOf(getCardholderAuthMethod().getNumber()));
+                    break;
+                case AuthCode:
+                    packedFields.put(field, getAuthCode());
+                    break;
+                case ResponseCode:
+                    packedFields.put(field, getResponseCode());
+                    break;
+                case ResponseText:
+                    packedFields.put(field, getResponseText());
+                    break;
+                case STAN:
+                    packedFields.put(field, getSTAN());
+                    break;
+                case TransactionID:
+                    packedFields.put(field, getTransactionID());
+                    break;
+                case TerminalID:
+                    packedFields.put(field, getTerminalID());
+                    break;
+                case CardEmvAid:
+                    packedFields.put(field, getCardEmvAid());
+                    break;
+                case CardAppName:
+                    packedFields.put(field, getCardAppName());
+                    break;
+                case CardInputMethod:
+                    packedFields.put(field, String.valueOf(getCardInputMethod().getNumber()));
+                    break;
+                case IssuerName:
+                    packedFields.put(field, getIssuerName());
+                    break;
+                case AdditionalInfo:
+                    packedFields.put(field, getAdditionalInfo());
+                    break;
+                case CardDataEnc:
+                    packedFields.put(field, getCardDataEnc());
+                    break;
+                case MerchantId:
+                    packedFields.put(field, getMerchantId());
+                    break;
+                case TVR:
+                    packedFields.put(field, getTVR());
+                    break;
+                case TSI:
+                    packedFields.put(field, getTSI());
+                    break;
+                case TC:
+                    packedFields.put(field, getTC());
+                    break;
+                case CID:
+                    packedFields.put(field, getCID());
+                    break;
+                case KVR:
+                    packedFields.put(field, getKVR());
+                    break;
+                case CDAResult:
+                    packedFields.put(field, getCDAResult());
+                    break;
+                case SalesCount:
+                    packedFields.put(field, String.valueOf(getSalesCount()));
+                    break;
+                case VoidCount:
+                    packedFields.put(field, String.valueOf(getVoidCount()));
+                    break;
+                case RefundCount:
+                    packedFields.put(field, String.valueOf(getRefundCount()));
+                    break;
+            }
+        }
+        return packedFields;
+    }
+
+    @Override
+    public Map<ResponseFieldsList, Object> packAsObject() {
+        Map<ResponseFieldsList, Object> packedFields = new EnumMap<>(ResponseFieldsList.class);
+        for(ResponseFieldsList field : getCurrentFieldsList()) {
+            switch (field) {
+                case EcrNumber:
+                    packedFields.put(field, getEcrNumber());
+                    break;
+                case EcrMerchantNumber:
+                    packedFields.put(field, getEcrMerchantNumber());
+                    break;
+                case OperationCode:
+                    packedFields.put(field, getOperationCode());
+                    break;
+                case OriginalOperationCode:
+                    packedFields.put(field, getOriginalOperationCode());
+                    break;
+                case TotalAmount:
+                    packedFields.put(field, getTotalAmount());
+                    break;
+                case AcquirerFeeAmount:
+                    packedFields.put(field, getAcquirerFeeAmount());
+                    break;
+                case TerminalFeeAmount:
+                    packedFields.put(field, getTerminalFeeAmount());
+                    break;
+                case TipsAmount:
+                    packedFields.put(field, getTipsAmount());
+                    break;
+                case CurrencyCode:
+                    packedFields.put(field, getCurrencyCode());
+                    break;
+                case ReceiptReference:
+                    packedFields.put(field, getReceiptReference());
+                    break;
+                case RRN:
+                    packedFields.put(field, getRRN());
+                    break;
+                case Status:
+                    packedFields.put(field, getStatus());
+                    break;
+                case OriginalOperationStatus:
+                    packedFields.put(field, getOriginalOperationStatus());
+                    break;
+                case TransDateTime:
+                    packedFields.put(field, getTransDateTime());
+                    break;
+                case TerminalDateTime:
+                    packedFields.put(field, getTerminalDateTime());
+                    break;
+                case CardPAN:
+                    packedFields.put(field, getCardPAN());
+                    break;
+                case ExpireDate:
+                    packedFields.put(field, getExpireDate());
+                    break;
+                case CardholderName:
+                    packedFields.put(field, getCardholderName());
+                    break;
+                case CardholderAuthMethod:
+                    packedFields.put(field, getCardholderAuthMethod());
+                    break;
+                case AuthCode:
+                    packedFields.put(field, getAuthCode());
+                    break;
+                case ResponseCode:
+                    packedFields.put(field, getResponseCode());
+                    break;
+                case ResponseText:
+                    packedFields.put(field, getResponseText());
+                    break;
+                case STAN:
+                    packedFields.put(field, getSTAN());
+                    break;
+                case TransactionID:
+                    packedFields.put(field, getTransactionID());
+                    break;
+                case TerminalID:
+                    packedFields.put(field, getTerminalID());
+                    break;
+                case CardEmvAid:
+                    packedFields.put(field, getCardEmvAid());
+                    break;
+                case CardAppName:
+                    packedFields.put(field, getCardAppName());
+                    break;
+                case CardInputMethod:
+                    packedFields.put(field, getCardInputMethod());
+                    break;
+                case IssuerName:
+                    packedFields.put(field, getIssuerName());
+                    break;
+                case AdditionalInfo:
+                    packedFields.put(field, getAdditionalInfo());
+                    break;
+                case CardDataEnc:
+                    packedFields.put(field, getCardDataEnc());
+                    break;
+                case MerchantId:
+                    packedFields.put(field, getMerchantId());
+                    break;
+                case TVR:
+                    packedFields.put(field, getTVR());
+                    break;
+                case TSI:
+                    packedFields.put(field, getTSI());
+                    break;
+                case TC:
+                    packedFields.put(field, getTC());
+                    break;
+                case CID:
+                    packedFields.put(field, getCID());
+                    break;
+                case KVR:
+                    packedFields.put(field, getKVR());
+                    break;
+                case CDAResult:
+                    packedFields.put(field, getCDAResult());
+                    break;
+                case SalesCount:
+                    packedFields.put(field, getSalesCount());
+                    break;
+                case VoidCount:
+                    packedFields.put(field, getVoidCount());
+                    break;
+                case RefundCount:
+                    packedFields.put(field, getRefundCount());
+                    break;
+                case SalesArray:
+                    packedFields.put(field, getSalesArray());
+                    break;
+                case VoidArray:
+                    packedFields.put(field, getVoidArray());
+                    break;
+                case RefundArray:
+                    packedFields.put(field, getRefundArray());
+                    break;
+            }
+        }
+        return packedFields;
     }
 
     public boolean checkMandatoryFields() {
