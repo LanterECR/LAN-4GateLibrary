@@ -5,7 +5,7 @@ import java.util.Map;
 
 public enum OperationsList {
     NoOperation(-1),
-    //Операции оплаты
+    //Sales operations
 
     Sale (1),
 
@@ -19,7 +19,7 @@ public enum OperationsList {
 
     FastTrack (300),
 
-    //Операции отмены
+    //Void operations
 
     Void (400),
 
@@ -27,13 +27,13 @@ public enum OperationsList {
 
     VoidPreAuth (402),
 
-    //Операции возврата
+    //Refund operations
 
     Refund (500),
 
     RefundWithoutRRN (501),
 
-    //Сервисные операции
+    //Service operations
 
     Registration (800),
 
@@ -83,9 +83,21 @@ public enum OperationsList {
     OperationsList(int value) {
         mOperationValue = value;
     }
-    public static OperationsList getValue(int operationValue) {
-        return mStaticValuesMap.get(operationValue);
+    /**
+     * Returns enum value which corresponds integer view
+     *
+     * @param value Card input method value
+     *
+     * @return Enum value, if value is correct. Null elsewhere
+     */
+    public static OperationsList getValue(int value) {
+        return mStaticValuesMap.get(value);
     }
+    /**
+     * Returns integer value which corresponds current enum value
+     *
+     * @return Integer value of enum
+     */
     public int getNumber() {
         return mOperationValue;
     }
