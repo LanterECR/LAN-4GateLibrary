@@ -29,7 +29,7 @@ public interface IResponse {
     /**
      * Packed all received fields into object.
      * All fields writes into map as-is, cast to Object.
-     * For example, arrays will be write as Set<{@link IResponse}>. Primitive types writes as wrappers.
+     * For example, arrays will be write as Set {@link IResponse} . Primitive types writes as wrappers.
      * For access to field data you mast cast their type
      *
      * @return the map, contains pairs of {@link ResponseFieldsList} and casted to Object fields.
