@@ -27,7 +27,9 @@ public enum StatusList {
 
     NeedSettlement(10),
 
-    CanceledByTerminal(11);
+    CanceledByTerminal(11),
+
+    FastTrackKeyError(12);
 
     private final int mOperationValue;
     private final static Map<Integer, StatusList> mStaticValuesMap = new HashMap<>();

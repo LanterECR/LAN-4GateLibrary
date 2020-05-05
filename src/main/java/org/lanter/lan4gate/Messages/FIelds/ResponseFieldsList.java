@@ -34,6 +34,7 @@ public enum ResponseFieldsList {
     CardInputMethod ("CardInputMethod"),
     IssuerName ("IssuerName"),
     AdditionalInfo ("AdditionalInfo"),
+    CardData ("CardData"),
     CardDataEnc ("CardDataEnc"),
     MerchantId ("MerchantId"),
     TVR ("TVR"),
