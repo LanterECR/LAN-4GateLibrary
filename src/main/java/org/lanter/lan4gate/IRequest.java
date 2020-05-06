@@ -32,6 +32,13 @@ public interface IRequest {
     void setAmount(long amount);
 
     /**
+     * Sets partial amount in minimum currency units, such as penny of ruble.
+     * Maximum amount length is 12 digits
+     *
+     * @param amount Value in range [0, 999999999999]
+     */
+    void setPartialAmount(long amount);
+    /**
      * Sets tips amount in minimum currency units, such as penny of ruble.
      * Maximum amount length is 12 digits
      *

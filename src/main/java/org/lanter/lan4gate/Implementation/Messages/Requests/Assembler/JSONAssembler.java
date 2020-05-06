@@ -60,6 +60,10 @@ public class JSONAssembler {
                         object.put(field.getString(), mRequest.getAmount());
                         break;
                     }
+                    case PartialAmount: {
+                        object.put(field.getString(), mRequest.getPartialAmount());
+                        break;
+                    }
                     case TipsAmount:{
                         object.put(field.getString(), mRequest.getTipsAmount());
                         break;

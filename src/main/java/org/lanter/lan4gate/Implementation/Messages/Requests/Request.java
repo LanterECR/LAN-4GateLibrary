@@ -12,6 +12,7 @@ public class Request implements IRequest {
     private int mEcrMerchantNumber;
     private OperationsList mOperationCode;
     private long mAmount;
+    private long mPartialAmount;
     private long mTipsAmount;
     private long mCashbackAmount;
     private int mCurrencyCode;
@@ -89,6 +90,15 @@ public class Request implements IRequest {
         return mAmount;
     }
 
+    @Override
+    public void setPartialAmount(long amount) {
+        mFields.add(RequestFieldsList.PartialAmount);
+        mPartialAmount = amount;
+    }
+
+    public long getPartialAmount() {
+        return mPartialAmount;
+    }
     public void setTipsAmount(long tipsAmount) {
         mFields.add(RequestFieldsList.TipsAmount);
         mTipsAmount = tipsAmount;

@@ -8,6 +8,7 @@ public enum RequestFieldsList {
     EcrMerchantNumber ("EcrMerchantNumber"),
     OperationCode ("OperationCode"),
     Amount ("Amount"),
+    PartialAmount ("PartialAmount"),
     TipsAmount ("TipsAmount"),
     CashbackAmount ("CashbackAmount"),
     CurrencyCode ("CurrencyCode"),
