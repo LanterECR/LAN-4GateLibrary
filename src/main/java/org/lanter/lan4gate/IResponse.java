@@ -74,6 +74,14 @@ public interface IResponse {
     long getTotalAmount();
 
     /**
+     * Returns partial amount in minimum currency units for executed operation.
+     * Value is sum of amount from request, acquirer fee, terminal fee and tips amount
+     *
+     * @return Value in range [0, 999999999999]
+     */
+    long getPartialAmount();
+
+    /**
      * Returns acquirer fee amount in minimum currency units for executed operation.
      *
      * @return Value in range [0, 999999999999]

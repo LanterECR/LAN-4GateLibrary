@@ -112,6 +112,10 @@ public class JSONParser {
                         getFieldTotalAmount(objectField, responseObject);
                         break;
                     }
+                    case PartialAmount: {
+                        getFieldPartialAmount(objectField, responseObject);
+                        break;
+                    }
                     case AcquirerFeeAmount: {
                         getFieldAcquirerFeeAmount(objectField, responseObject);
                         break;
@@ -302,6 +306,13 @@ public class JSONParser {
         if(totalAmount != -1)
         {
             responseObject.setTotalAmount(totalAmount);
+        }
+    }
+    private void getFieldPartialAmount(JSONObject objectField, Response responseObject) {
+        long partialAmount = objectField.optLong(ResponseFieldsList.PartialAmount.getString(), -1);
+        if(partialAmount != -1)
+        {
+            responseObject.setPartialAmount(partialAmount);
         }
     }
     private void getFieldAcquirerFeeAmount(JSONObject objectField, Response responseObject) {

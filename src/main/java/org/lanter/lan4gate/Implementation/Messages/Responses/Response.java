@@ -12,6 +12,7 @@ public class Response implements IResponse {
     private OperationsList mOperationCode;
     private OperationsList mOriginalOperationCode;
     private long mTotalAmount;
+    private long mPartialAmount;
     private long mAcquirerFeeAmount;
     private long mTerminalFeeAmount;
     private long mTipsAmount;
@@ -420,6 +421,15 @@ public class Response implements IResponse {
         mCurrentFields.add(ResponseFieldsList.TotalAmount);
     }
 
+    @Override
+    public long getPartialAmount() {
+        return mPartialAmount;
+    }
+
+    public void setPartialAmount(long partialAmount) {
+        mPartialAmount = partialAmount;
+        mCurrentFields.add(ResponseFieldsList.PartialAmount);
+    }
     public long getAcquirerFeeAmount() {
         return mAcquirerFeeAmount;
     }

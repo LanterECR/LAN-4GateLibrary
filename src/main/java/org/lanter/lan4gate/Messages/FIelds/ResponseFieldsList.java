@@ -9,6 +9,7 @@ public enum ResponseFieldsList {
     OperationCode ("OperationCode"),
     OriginalOperationCode ("OriginalOperationCode"),
     TotalAmount ("TotalAmount"),
+    PartialAmount("PartialAmount"),
     AcquirerFeeAmount("AmountAquirerFee"),
     TerminalFeeAmount("AmountTerminalFee"),
     TipsAmount ("TipsAmount"),
