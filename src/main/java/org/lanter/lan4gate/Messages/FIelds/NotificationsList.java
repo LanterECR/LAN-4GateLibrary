@@ -52,79 +52,81 @@ public enum NotificationsList {
      * Insert card into chip reader
      */
     InsertCard(11),
+    EjectCard(12),
     /**
      * Insert card into magnetic stripe reader
      */
-    InsertMagStripe(12),
+    SwipeMagStripe(13),
     /**
      * Card reading in progress
      */
-    CardReading(13),
+    CardReading(14),
     /**
      * Card reading error occurred
      */
-    CardReadingError(14),
+    CardReadingError(15),
     /**
      * Card reading error occurred. Insert card again
      */
-    CardReadingErrorTryAgain(15),
+    CardReadingErrorTryAgain(16),
     /**
      * This card not can read. Try another card
      */
-    CardReadingErrorUseAnother(16),
+    CardReadingErrorUseAnother(17),
     /**
      * Magnetic stripe not readable.
      */
-    MagStripeReadingError(17),
+    MagStripeReadingError(18),
     /**
      * Contactless operation declined. Use chip reader
      */
-    CtlsDeclinedUseChip(18),
+    CtlsDeclinedUseChip(19),
     /**
      * Chip operation declined. Fallback to magnetic stripe.
      */
-    ChipDeclinedUseMagStripe(19),
+    ChipDeclinedUseMagStripe(20),
     /**
      * Reader device error
      */
-    ReaderError(20),
-    ChipPaymentNotAllowed(21),
-    CtlsPaymentNotAllowed(22),
-    MagStripePaymentNotAllowed(23),
-    FallbackNotAllowed(24),
-    CardBlocked(25),
+    ReaderError(21),
+    ChipPaymentNotAllowed(22),
+    CtlsPaymentNotAllowed(23),
+    MagStripePaymentNotAllowed(24),
+    FallbackNotAllowed(25),
+    CardBlocked(26),
     /**
      * Account blocked notifications list.
      */
-    AccountBlocked(26),
-    CardInBlackList(27),
-    DeclinedCardExpired(28),
-    DeclinedSuspectedFraud(29),
-    DeclinedCallAcquirer(30),
-    DeclinedCardRestricted(31),
-    DeclinedCallIssuerBank(32),
-    DeclinedNotAllowedForCard(33),
-    DeclinedNotAllowedForCardholder(34),
-    DeclinedSecurityViolation(35),
-    PinEntered(36),
-    OfflinePinEntered(37),
-    IncorrectPinTryAgain(38),
-    OfflinePinBlocked(39),
-    OfflinePinLastTry(40),
+    AccountBlocked(27),
+    CardInBlackList(28),
+    DeclinedCardExpired(29),
+    DeclinedSuspectedFraud(30),
+    DeclinedCallAcquirer(31),
+    DeclinedCardRestricted(32),
+    DeclinedCallIssuerBank(33),
+    DeclinedNotAllowedForCard(34),
+    DeclinedNotAllowedForCardholder(35),
+    DeclinedSecurityViolation(36),
+    EnterPin(37),
+    PinEntered(38),
+    OfflinePinEntered(39),
+    IncorrectPinTryAgain(40),
+    OfflinePinBlocked(41),
+    OfflinePinLastTry(42),
     /**
      * Offline pin input error. Least try count. Try count sends as additional info
      */
-    OfflinePinTryCount(41),
-    DeclinedPinEntryLimitReached(42),
-    DeclinedIncorrectPin(43),
+    OfflinePinTryCount(43),
+    DeclinedPinEntryLimitReached(44),
+    DeclinedIncorrectPin(45),
     /**
      * Terminal battery has critical level. Any operation executing is blocked
      */
-    CriticalBatteryLevel(44),
+    CriticalBatteryLevel(46),
     /**
      * Terminal battery has danger level. Operation may not be executed
      */
-    DangerBatteryLevel(45);
+    DangerBatteryLevel(47);
 
     private final int mValue;
     private final static Map<Integer, NotificationsList> mStaticValuesMap = new HashMap<>();

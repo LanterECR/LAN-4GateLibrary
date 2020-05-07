@@ -7,7 +7,7 @@ import org.lanter.lan4gate.Implementation.Messages.Requests.Request;
 public class FastTrack extends Request {
     public FastTrack() {
         setOperationCode(OperationsList.FastTrack);
-        addMandatoryFields(RequestFieldsList.Amount);
+        addMandatoryFields(RequestFieldsList.PartialAmount);
         addMandatoryFields(RequestFieldsList.CurrencyCode);
         addMandatoryFields(RequestFieldsList.OpenTags);
 
