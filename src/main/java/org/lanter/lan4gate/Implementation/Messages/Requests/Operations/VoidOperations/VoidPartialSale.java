@@ -11,7 +11,7 @@ public class VoidPartialSale extends Request {
         addOptionalFields(RequestFieldsList.EcrMerchantNumber);
         addMandatoryFields(RequestFieldsList.ReceiptReference);
 
-        addOptionalFields(RequestFieldsList.Amount);
+        addOptionalFields(RequestFieldsList.PartialAmount);
         addOptionalFields(RequestFieldsList.CurrencyCode);
     }
 }

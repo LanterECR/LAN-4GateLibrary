@@ -10,6 +10,7 @@ public class VoidPartialSale extends Response {
 
         addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addOptionalFields(ResponseFieldsList.TotalAmount);
+        addOptionalFields(ResponseFieldsList.PartialAmount);
         addOptionalFields(ResponseFieldsList.CurrencyCode);
 
         addOptionalFields(ResponseFieldsList.AcquirerFeeAmount);
