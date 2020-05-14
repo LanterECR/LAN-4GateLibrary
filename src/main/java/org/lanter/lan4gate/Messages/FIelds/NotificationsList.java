@@ -126,7 +126,23 @@ public enum NotificationsList {
     /**
      * Terminal battery has danger level. Operation may not be executed
      */
-    DangerBatteryLevel(47);
+    DangerBatteryLevel(47),
+    /**
+     * Entering a PIN code is required. Impossible to refuse input
+     */
+    ErrorPinMandatory(48),
+    /**
+     * Error occurred while PIN code inputs
+     */
+    ErrorPinInput(49),
+    /**
+     * Magnetic stripe operation has declined. Use chip interface
+     */
+    MsrDeclinedUseChip(50),
+    /**
+     * PIN enter timeout expired
+     */
+    PinEnterTimeout(51);
 
     private final int mValue;
     private final static Map<Integer, NotificationsList> mStaticValuesMap = new HashMap<>();
