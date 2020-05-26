@@ -311,22 +311,24 @@ public class TCPCommunication {
             }
         }).start();
     }
-    private void notifyError(final String message) {
+    private void notifyError(String message) {
+        final String msg = message;
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (ICommunicationListener listener : mNewDataListeners) {
-                    listener.errorMessage(message);
+                    listener.errorMessage(msg);
                 }
             }
         }).start();
     }
-    private void notifyException(final Exception exception) {
+    private void notifyException(Exception exception) {
+        final Exception exp = exception;
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (ICommunicationListener listener : mNewDataListeners) {
-                    listener.errorException(exception);
+                    listener.errorException(exp);
                 }
             }
         }).start();
