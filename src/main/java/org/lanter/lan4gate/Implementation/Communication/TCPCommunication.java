@@ -311,7 +311,7 @@ public class TCPCommunication {
             }
         }).start();
     }
-    private void notifyError(String message) {
+    private void notifyError(final String message) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -321,7 +321,7 @@ public class TCPCommunication {
             }
         }).start();
     }
-    private void notifyException(Exception exception) {
+    private void notifyException(final Exception exception) {
         new Thread(new Runnable() {
             @Override
             public void run() {
