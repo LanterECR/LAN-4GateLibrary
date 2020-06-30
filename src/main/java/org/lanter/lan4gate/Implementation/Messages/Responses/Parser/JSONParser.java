@@ -276,6 +276,30 @@ public class JSONParser {
                         getFieldRefundArray(objectField, responseObject);
                         break;
                     }
+                    case CardPANHash: {
+                        getFieldCardPANHash(objectField, responseObject);
+                        break;
+                    }
+                    case ReceiptLine1: {
+                        getFieldReceiptLine1(objectField, responseObject);
+                        break;
+                    }
+                    case ReceiptLine2: {
+                        getFieldReceiptLine2(objectField, responseObject);
+                        break;
+                    }
+                    case ReceiptLine3: {
+                        getFieldReceiptLine3(objectField, responseObject);
+                        break;
+                    }
+                    case ReceiptLine4: {
+                        getFieldReceiptLine4(objectField, responseObject);
+                        break;
+                    }
+                    case ReceiptLine5: {
+                        getFieldReceiptLine5(objectField, responseObject);
+                        break;
+                    }
                 }//switch
             }//object has field
         }//foreach
@@ -585,7 +609,48 @@ public class JSONParser {
     private void getFieldRefundArray(JSONObject objectField, Response responseObject) {
         responseObject.setRefundArray(parseArray(ResponseFieldsList.RefundArray.getString(), objectField));
     }
-
+    private void getFieldCardPANHash (JSONObject objectField, Response responseObject) {
+        String cardPANHash = objectField.optString(ResponseFieldsList.CardPANHash.getString());
+        if(!cardPANHash.isEmpty())
+        {
+            responseObject.setCardPANHash(cardPANHash);
+        }
+    }
+    private void getFieldReceiptLine1 (JSONObject objectField, Response responseObject) {
+        String receiptLine1 = objectField.optString(ResponseFieldsList.ReceiptLine1.getString());
+        if(!receiptLine1.isEmpty())
+        {
+            responseObject.setReceiptLine1(receiptLine1);
+        }
+    }
+    private void getFieldReceiptLine2 (JSONObject objectField, Response responseObject) {
+        String receiptLine2 = objectField.optString(ResponseFieldsList.ReceiptLine2.getString());
+        if(!receiptLine2.isEmpty())
+        {
+            responseObject.setReceiptLine2(receiptLine2);
+        }
+    }
+    private void getFieldReceiptLine3 (JSONObject objectField, Response responseObject) {
+        String receiptLine3 = objectField.optString(ResponseFieldsList.ReceiptLine3.getString());
+        if(!receiptLine3.isEmpty())
+        {
+            responseObject.setReceiptLine3(receiptLine3);
+        }
+    }
+    private void getFieldReceiptLine4 (JSONObject objectField, Response responseObject) {
+        String receiptLine4 = objectField.optString(ResponseFieldsList.ReceiptLine4.getString());
+        if(!receiptLine4.isEmpty())
+        {
+            responseObject.setReceiptLine4(receiptLine4);
+        }
+    }
+    private void getFieldReceiptLine5 (JSONObject objectField, Response responseObject) {
+        String receiptLine5 = objectField.optString(ResponseFieldsList.ReceiptLine5.getString());
+        if(!receiptLine5.isEmpty())
+        {
+            responseObject.setReceiptLine5(receiptLine5);
+        }
+    }
     private Set<IResponse> parseArray(String arrayName, JSONObject objectField) {
         Set<IResponse> array = new HashSet<>();
         if(objectField.has(arrayName)){

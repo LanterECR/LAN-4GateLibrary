@@ -19,6 +19,7 @@ public class FastTrack extends Response {
         addOptionalFields(ResponseFieldsList.IssuerName);
         addOptionalFields(ResponseFieldsList.CardInputMethod);
         addOptionalFields(ResponseFieldsList.CardPAN);
+        addOptionalFields(ResponseFieldsList.CardPANHash);
         addOptionalFields(ResponseFieldsList.ExpireDate);
         addOptionalFields(ResponseFieldsList.CardAppName);
         addOptionalFields(ResponseFieldsList.CardEmvAid);

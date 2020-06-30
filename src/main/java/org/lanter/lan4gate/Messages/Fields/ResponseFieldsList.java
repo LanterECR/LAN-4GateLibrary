@@ -49,7 +49,13 @@ public enum ResponseFieldsList {
     RefundCount ("RefundCount"),
     SalesArray ("SalesArray"),
     VoidArray ("VoidArray"),
-    RefundArray ("RefundArray");
+    RefundArray ("RefundArray"),
+    CardPANHash ("CardPANHash"),
+    ReceiptLine1("receiptLine1"),
+    ReceiptLine2("receiptLine2"),
+    ReceiptLine3("receiptLine3"),
+    ReceiptLine4("receiptLine4"),
+    ReceiptLine5("receiptLine5");
 
     private final String mValue;
     private static final Map<String, ResponseFieldsList> mStaticValuesMap = new HashMap<>();

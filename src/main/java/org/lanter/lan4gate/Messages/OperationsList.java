@@ -69,7 +69,23 @@ public enum OperationsList {
 
     SetCurrentPrinter (816),
 
-    SelfTest(817);
+    SelfTest(817),
+
+    GetOperationCopy(818),
+
+    DisplayQR(819),
+
+    SendLogs(820),
+
+    SetLogLevel(821),
+
+    LicenceActivationFile(822),
+
+    LicenceActivationServer(823),
+
+    ClearReversal(824),
+
+    ClearAllJournals(825);
 
     private final int mOperationValue;
     private final static Map<Integer, OperationsList> mStaticValuesMap = new HashMap<>();
