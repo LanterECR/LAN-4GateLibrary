@@ -864,7 +864,9 @@ public class Response implements IResponse {
         return mCardPANHash;
     }
     public void setCardPANHash(String PANHash) {
+
         mCardPANHash = PANHash;
+        mCurrentFields.add(ResponseFieldsList.CardPANHash);
     }
     @Override
     public String getReceiptLine1() {
@@ -873,6 +875,7 @@ public class Response implements IResponse {
 
     public void setReceiptLine1(String receiptLine1) {
         mReceiptLine1 = receiptLine1;
+        mCurrentFields.add(ResponseFieldsList.ReceiptLine1);
     }
 
     @Override
@@ -882,6 +885,7 @@ public class Response implements IResponse {
 
     public void setReceiptLine2(String receiptLine2) {
         mReceiptLine2 = receiptLine2;
+        mCurrentFields.add(ResponseFieldsList.ReceiptLine2);
     }
 
     @Override
@@ -891,6 +895,7 @@ public class Response implements IResponse {
 
     public void setReceiptLine3(String receiptLine3) {
         mReceiptLine3 = receiptLine3;
+        mCurrentFields.add(ResponseFieldsList.ReceiptLine3);
     }
 
     @Override
@@ -900,6 +905,7 @@ public class Response implements IResponse {
 
     public void setReceiptLine4(String receiptLine4) {
         mReceiptLine4 = receiptLine4;
+        mCurrentFields.add(ResponseFieldsList.ReceiptLine4);
     }
 
     @Override
@@ -909,5 +915,6 @@ public class Response implements IResponse {
 
     public void setReceiptLine5(String receiptLine5) {
         mReceiptLine5 = receiptLine5;
+        mCurrentFields.add(ResponseFieldsList.ReceiptLine5);
     }
 }
