@@ -50,6 +50,12 @@ public class Response implements IResponse {
     private int mSalesCount;
     private int mVoidCount;
     private int mRefundCount;
+    private String mCardPANHash;
+    private String mReceiptLine1;
+    private String mReceiptLine2;
+    private String mReceiptLine3;
+    private String mReceiptLine4;
+    private String mReceiptLine5;
     private final Set<IResponse> mSalesArray = new HashSet<>();
     private final Set<IResponse> mVoidArray = new HashSet<>();
     private final Set<IResponse> mRefundArray = new HashSet<>();
@@ -79,6 +85,12 @@ public class Response implements IResponse {
         addMandatoryFields(ResponseFieldsList.EcrNumber);
         addMandatoryFields(ResponseFieldsList.OperationCode);
         addMandatoryFields(ResponseFieldsList.Status);
+
+        addOptionalFields(ResponseFieldsList.ReceiptLine1);
+        addOptionalFields(ResponseFieldsList.ReceiptLine2);
+        addOptionalFields(ResponseFieldsList.ReceiptLine3);
+        addOptionalFields(ResponseFieldsList.ReceiptLine4);
+        addOptionalFields(ResponseFieldsList.ReceiptLine5);
     }
 
     public Set<ResponseFieldsList> getMandatoryFields() {
@@ -112,6 +124,9 @@ public class Response implements IResponse {
                     break;
                 case TotalAmount:
                     packedFields.put(field, String.valueOf(getTotalAmount()));
+                    break;
+                case PartialAmount:
+                    packedFields.put(field, String.valueOf(getPartialAmount()));
                     break;
                 case AcquirerFeeAmount:
                     packedFields.put(field, String.valueOf(getAcquirerFeeAmount()));
@@ -188,6 +203,9 @@ public class Response implements IResponse {
                 case AdditionalInfo:
                     packedFields.put(field, getAdditionalInfo());
                     break;
+                case CardData:
+                    packedFields.put(field, getCardData());
+                    break;
                 case CardDataEnc:
                     packedFields.put(field, getCardDataEnc());
                     break;
@@ -221,6 +239,24 @@ public class Response implements IResponse {
                 case RefundCount:
                     packedFields.put(field, String.valueOf(getRefundCount()));
                     break;
+                case CardPANHash:
+                    packedFields.put(field, getCardPANHash());
+                    break;
+                case ReceiptLine1:
+                    packedFields.put(field, getReceiptLine1());
+                    break;
+                case ReceiptLine2:
+                    packedFields.put(field, getReceiptLine2());
+                    break;
+                case ReceiptLine3:
+                    packedFields.put(field, getReceiptLine3());
+                    break;
+                case ReceiptLine4:
+                    packedFields.put(field, getReceiptLine4());
+                    break;
+                case ReceiptLine5:
+                    packedFields.put(field, getReceiptLine5());
+                    break;
             }
         }
         return packedFields;
@@ -242,6 +278,9 @@ public class Response implements IResponse {
                     break;
                 case OriginalOperationCode:
                     packedFields.put(field, getOriginalOperationCode());
+                    break;
+                case PartialAmount:
+                    packedFields.put(field, getPartialAmount());
                     break;
                 case TotalAmount:
                     packedFields.put(field, getTotalAmount());
@@ -321,6 +360,9 @@ public class Response implements IResponse {
                 case AdditionalInfo:
                     packedFields.put(field, getAdditionalInfo());
                     break;
+                case CardData:
+                    packedFields.put(field, getCardData());
+                    break;
                 case CardDataEnc:
                     packedFields.put(field, getCardDataEnc());
                     break;
@@ -362,6 +404,24 @@ public class Response implements IResponse {
                     break;
                 case RefundArray:
                     packedFields.put(field, getRefundArray());
+                    break;
+                case CardPANHash:
+                    packedFields.put(field, getCardPANHash());
+                    break;
+                case ReceiptLine1:
+                    packedFields.put(field, getReceiptLine1());
+                    break;
+                case ReceiptLine2:
+                    packedFields.put(field, getReceiptLine2());
+                    break;
+                case ReceiptLine3:
+                    packedFields.put(field, getReceiptLine3());
+                    break;
+                case ReceiptLine4:
+                    packedFields.put(field, getReceiptLine4());
+                    break;
+                case ReceiptLine5:
+                    packedFields.put(field, getReceiptLine5());
                     break;
             }
         }
@@ -797,5 +857,57 @@ public class Response implements IResponse {
             mRefundArray.addAll(refundArray);
             mCurrentFields.add(ResponseFieldsList.RefundArray);
         }
+    }
+
+    @Override
+    public String getCardPANHash() {
+        return mCardPANHash;
+    }
+    public void setCardPANHash(String PANHash) {
+        mCardPANHash = PANHash;
+    }
+    @Override
+    public String getReceiptLine1() {
+        return mReceiptLine1;
+    }
+
+    public void setReceiptLine1(String receiptLine1) {
+        mReceiptLine1 = receiptLine1;
+    }
+
+    @Override
+    public String getReceiptLine2() {
+        return mReceiptLine2;
+    }
+
+    public void setReceiptLine2(String receiptLine2) {
+        mReceiptLine2 = receiptLine2;
+    }
+
+    @Override
+    public String getReceiptLine3() {
+        return mReceiptLine3;
+    }
+
+    public void setReceiptLine3(String receiptLine3) {
+        mReceiptLine3 = receiptLine3;
+    }
+
+    @Override
+    public String getReceiptLine4() {
+        return mReceiptLine4;
+    }
+
+    public void setReceiptLine4(String receiptLine4) {
+        mReceiptLine4 = receiptLine4;
+    }
+
+    @Override
+    public String getReceiptLine5() {
+        return mReceiptLine5;
+    }
+
+    public void setReceiptLine5(String receiptLine5) {
+        mReceiptLine5 = receiptLine5;
     }
 }

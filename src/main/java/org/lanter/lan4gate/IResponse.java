@@ -368,4 +368,40 @@ public interface IResponse {
      * @return List of {@link IResponse} objects
      */
     Set<IResponse> getRefundArray();
+
+    /**
+     * Returns hashed Card PAN for FastTrack operation
+     * @return String, contains hashed card PAN
+     */
+    String getCardPANHash();
+
+    /**
+     * Returns the first line with organization info for print on receipt
+     * @return String, contains first line with organization info
+     */
+    String getReceiptLine1();
+
+    /**
+     * Returns the second line with organization info for print on receipt
+     * @return @return String, contains second line with organization info
+     */
+    String getReceiptLine2();
+
+    /**
+     * Returns the third line with organization info for print on receipt
+     * @return @return String, contains third line with organization info
+     */
+    String getReceiptLine3();
+
+    /**
+     * Returns the four line with organization info for print on receipt
+     * @return @return String, contains four line with organization info
+     */
+    String getReceiptLine4();
+
+    /**
+     * Returns five line with organization info for print on receipt
+     * @return @return String, contains five line with organization info
+     */
+    String getReceiptLine5();
 }
