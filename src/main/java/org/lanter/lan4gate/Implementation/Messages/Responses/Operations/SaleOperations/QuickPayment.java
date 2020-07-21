@@ -11,5 +11,6 @@ public class QuickPayment extends Response {
         addOptionalFields(ResponseFieldsList.EcrMerchantNumber);
         addOptionalFields(ResponseFieldsList.TotalAmount);
         addOptionalFields(ResponseFieldsList.CurrencyCode);
+        addOptionalFields(ResponseFieldsList.ReceiptReference);
     }
 }

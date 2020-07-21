@@ -12,6 +12,7 @@ public class RefundWithoutRRN extends Response {
         addOptionalFields(ResponseFieldsList.TotalAmount);
         addOptionalFields(ResponseFieldsList.CurrencyCode);
 
+        addOptionalFields(ResponseFieldsList.ReceiptReference);
         addOptionalFields(ResponseFieldsList.AcquirerFeeAmount);
         addOptionalFields(ResponseFieldsList.RRN);
         addOptionalFields(ResponseFieldsList.ResponseCode);
