@@ -17,7 +17,7 @@ public class RequestBuilder {
     }
 
     public Request prepareRequest(OperationsList operation) throws UnsupportedOperationException {
-        Request result;
+        Request result = null;
         switch (operation) {
             case Sale: {
                 result = new Sale();
@@ -135,11 +135,34 @@ public class RequestBuilder {
                 result = new SelfTest();
                 break;
             }
-            default: {
-                throw new UnsupportedOperationException("Operation " + operation.name() + " not supported yet");
-            }
+            case GetOperationCopy:
+                result = new GetOperationCopy();
+                break;
+            case DisplayQR:
+                result = new DisplayQR();
+                break;
+            case SendLogs:
+                result = new SendLogs();
+                break;
+            case SetLogLevel:
+                result = new SetLogLevel();
+                break;
+            case LicenceActivationFile:
+                result = new LicenceActivationFile();
+                break;
+            case LicenceActivationServer:
+                result = new LicenceActivationServer();
+                break;
+            case ClearReversal:
+                result = new ClearReversal();
+                break;
+            case ClearAllJournals:
+                result = new ClearAllJournals();
+                break;
         }
-        result.setEcrNumber(mEcrNumber);
+        if(result != null) {
+            result.setEcrNumber(mEcrNumber);
+        }
         return result;
     }
 }
