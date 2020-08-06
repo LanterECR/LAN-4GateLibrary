@@ -132,9 +132,30 @@ public class ResponseBuilder {
                 result = new SelfTest();
                 break;
             }
-            default: {
+            case GetOperationCopy:
+                result = new GetOperationCopy(originalOperation);
                 break;
-            }
+            case DisplayQR:
+                result = new DisplayQR();
+                break;
+            case SendLogs:
+                result = new SendLogs();
+                break;
+            case SetLogLevel:
+                result = new SetLogLevel();
+                break;
+            case LicenceActivationFile:
+                result = new LicenceActivationFile();
+                break;
+            case LicenceActivationServer:
+                result = new LicenceActivationServer();
+                break;
+            case ClearReversal:
+                result = new ClearReversal();
+                break;
+            case ClearAllJournals:
+                result = new ClearAllJournals();
+                break;
         }
         return result;
     }
