@@ -56,6 +56,7 @@ public class Response implements IResponse {
     private String mReceiptLine3;
     private String mReceiptLine4;
     private String mReceiptLine5;
+    private boolean mFinalizationRequired;
     private final Set<IResponse> mSalesArray = new HashSet<>();
     private final Set<IResponse> mVoidArray = new HashSet<>();
     private final Set<IResponse> mRefundArray = new HashSet<>();
@@ -911,6 +912,16 @@ public class Response implements IResponse {
     @Override
     public String getReceiptLine5() {
         return mReceiptLine5;
+    }
+
+    @Override
+    public boolean getFinalizationRequired() {
+        return mFinalizationRequired;
+    }
+
+    public void setFinalizationRequired(boolean finalizationRequired) {
+        mFinalizationRequired = finalizationRequired;
+        mCurrentFields.add(ResponseFieldsList.FinalizationRequired);
     }
 
     public void setReceiptLine5(String receiptLine5) {

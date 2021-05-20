@@ -300,6 +300,10 @@ public class JSONParser {
                         getFieldReceiptLine5(objectField, responseObject);
                         break;
                     }
+                    case FinalizationRequired: {
+                        getFieldFinalizationRequired(objectField, responseObject);
+                        break;
+                    }
                 }//switch
             }//object has field
         }//foreach
@@ -649,6 +653,13 @@ public class JSONParser {
         if(!receiptLine5.isEmpty())
         {
             responseObject.setReceiptLine5(receiptLine5);
+        }
+    }
+    private void getFieldFinalizationRequired(JSONObject objectField, Response responseObject) {
+        int finalizationRequired  = objectField.optInt(ResponseFieldsList.FinalizationRequired.getString(), -1);
+        if(finalizationRequired != -1) {
+            boolean result = finalizationRequired == 1;
+            responseObject.setFinalizationRequired(result);
         }
     }
     private Set<IResponse> parseArray(String arrayName, JSONObject objectField) {
