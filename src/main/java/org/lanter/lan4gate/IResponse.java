@@ -404,4 +404,10 @@ public interface IResponse {
      * @return @return String, contains five line with organization info
      */
     String getReceiptLine5();
+
+    /**
+     * Return finalization status
+     * @return if true, then ECR should send FinalizeTransaction
+     */
+    boolean getFinalizationRequired();
 }
