@@ -304,10 +304,17 @@ public class JSONParser {
                         getFieldFinalizationRequired(objectField, responseObject);
                         break;
                     }
+                    case ApplicationLabel: {
+                        getFieldApplicationLabel(objectField, responseObject);
+                        break;
+                    }
                 }//switch
             }//object has field
         }//foreach
     }//getFields
+
+
+
     private void getFieldEcrNumber(JSONObject objectField, Response responseObject) {
         int ecrNumber = objectField.optInt(ResponseFieldsList.EcrNumber.getString(), -1);
         if(ecrNumber != -1)
@@ -662,6 +669,15 @@ public class JSONParser {
             responseObject.setFinalizationRequired(result);
         }
     }
+
+    private void getFieldApplicationLabel(JSONObject objectField, Response responseObject) {
+        String label = objectField.optString(ResponseFieldsList.ApplicationLabel.getString());
+        if(!label.isEmpty())
+        {
+            responseObject.setApplicationLabel(label);
+        }
+    }
+
     private Set<IResponse> parseArray(String arrayName, JSONObject objectField) {
         Set<IResponse> array = new HashSet<>();
         if(objectField.has(arrayName)){

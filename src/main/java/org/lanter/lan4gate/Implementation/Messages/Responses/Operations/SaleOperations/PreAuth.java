@@ -39,5 +39,6 @@ public class PreAuth extends Response {
         addOptionalFields(ResponseFieldsList.TransactionID);
         addOptionalFields(ResponseFieldsList.CardholderName);
         addOptionalFields(ResponseFieldsList.CardholderAuthMethod);
+        addOptionalFields(ResponseFieldsList.ApplicationLabel);
     }
 }

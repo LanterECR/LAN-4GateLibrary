@@ -410,4 +410,10 @@ public interface IResponse {
      * @return if true, then ECR should send FinalizeTransaction
      */
     boolean getFinalizationRequired();
+
+    /**
+     * Return Application label, received by card
+     * @return Application label, if exists
+     */
+    String getApplicationLabel();
 }
