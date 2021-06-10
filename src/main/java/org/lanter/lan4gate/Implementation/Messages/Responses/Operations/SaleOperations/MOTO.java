@@ -29,5 +29,6 @@ public class MOTO extends Response {
         addOptionalFields(ResponseFieldsList.CardDataEnc);
         addOptionalFields(ResponseFieldsList.TransactionID);
         addOptionalFields(ResponseFieldsList.CardholderAuthMethod);
+        addOptionalFields(ResponseFieldsList.ApplicationLabel);
     }
 }

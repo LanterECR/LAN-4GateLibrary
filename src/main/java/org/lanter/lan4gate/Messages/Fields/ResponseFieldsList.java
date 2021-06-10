@@ -56,7 +56,8 @@ public enum ResponseFieldsList {
     ReceiptLine3("receiptLine3"),
     ReceiptLine4("receiptLine4"),
     ReceiptLine5("receiptLine5"),
-    FinalizationRequired("FinalizationRequired");
+    FinalizationRequired("FinalizationRequired"),
+    ApplicationLabel("ApplicationLabel");
 
     private final String mValue;
     private static final Map<String, ResponseFieldsList> mStaticValuesMap = new HashMap<>();

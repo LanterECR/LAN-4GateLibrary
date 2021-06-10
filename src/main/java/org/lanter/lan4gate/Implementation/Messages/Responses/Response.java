@@ -57,6 +57,7 @@ public class Response implements IResponse {
     private String mReceiptLine4;
     private String mReceiptLine5;
     private boolean mFinalizationRequired;
+    private String mApplicationLabel;
     private final Set<IResponse> mSalesArray = new HashSet<>();
     private final Set<IResponse> mVoidArray = new HashSet<>();
     private final Set<IResponse> mRefundArray = new HashSet<>();
@@ -924,8 +925,20 @@ public class Response implements IResponse {
         mCurrentFields.add(ResponseFieldsList.FinalizationRequired);
     }
 
+
+
     public void setReceiptLine5(String receiptLine5) {
         mReceiptLine5 = receiptLine5;
         mCurrentFields.add(ResponseFieldsList.ReceiptLine5);
+    }
+
+    @Override
+    public String getApplicationLabel() {
+        return mApplicationLabel;
+    }
+
+    public void setApplicationLabel(String label) {
+        mApplicationLabel = label;
+        mCurrentFields.add(ResponseFieldsList.ApplicationLabel);
     }
 }
