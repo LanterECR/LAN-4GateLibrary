@@ -1,7 +1,7 @@
 package org.lanter.lan4gate.Implementation.Messages.Responses;
 
 import org.lanter.lan4gate.INotification;
-import org.lanter.lan4gate.Messages.Fields.NotificationsList;
+import org.lanter.lan4gate.Messages.NotificationsList;
 
 public class Notification implements INotification {
     private NotificationsList mNotificationType;

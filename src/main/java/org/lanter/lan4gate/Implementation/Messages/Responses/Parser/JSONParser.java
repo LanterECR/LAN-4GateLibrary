@@ -4,10 +4,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.lanter.lan4gate.IResponse;
 import org.lanter.lan4gate.Implementation.Messages.Fields.ClassFieldValuesList;
-import org.lanter.lan4gate.Implementation.Messages.Fields.NotificationFields;
+import org.lanter.lan4gate.Messages.Fields.NotificationFieldsList;
 import org.lanter.lan4gate.Implementation.Messages.Fields.RootFields;
 import org.lanter.lan4gate.Implementation.Messages.Responses.Notification;
 import org.lanter.lan4gate.Messages.Fields.*;
+import org.lanter.lan4gate.Messages.NotificationsList;
 import org.lanter.lan4gate.Messages.OperationsList;
 import org.lanter.lan4gate.Implementation.Messages.Responses.ArrayStubOperation;
 import org.lanter.lan4gate.Implementation.Messages.Responses.Response;
@@ -66,12 +67,12 @@ public class JSONParser {
             if (mNotification == null) {
                 mNotification = new Notification();
             }
-            NotificationsList notificationType = NotificationsList.getValue(objectField.optInt(NotificationFields.Code.getString(),0));
+            NotificationsList notificationType = NotificationsList.getValue(objectField.optInt(NotificationFieldsList.Code.getString(),0));
             if(notificationType != null) {
                 result = true;
                 mNotification.setNotificationCode(notificationType);
-                mNotification.setMessage(objectField.optString(NotificationFields.Message.getString()));
-                mNotification.setAdditionalInfo(objectField.optString(NotificationFields.Additional.getString()));
+                mNotification.setMessage(objectField.optString(NotificationFieldsList.Message.getString()));
+                mNotification.setAdditionalInfo(objectField.optString(NotificationFieldsList.Additional.getString()));
             }
         }
         return result;
