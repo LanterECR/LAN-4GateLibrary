@@ -9,7 +9,9 @@ public enum ClassFieldValuesList {
 
     Response ( "LANTER::Response"),
 
-    Notification ( "LANTER::Notification");
+    Notification ( "LANTER::Notification"),
+
+    Interaction ( "LANTER::Interaction");
 
     private final String mValue;
     private static final Map<String, ClassFieldValuesList> mStaticValuesMap = new HashMap<>();

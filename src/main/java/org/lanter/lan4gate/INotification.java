@@ -1,6 +1,6 @@
 package org.lanter.lan4gate;
 
-import org.lanter.lan4gate.Messages.Fields.NotificationsList;
+import org.lanter.lan4gate.Messages.NotificationsList;
 
 /**
  * This interface provide access for notification events from terminal.

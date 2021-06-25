@@ -3,11 +3,15 @@ package org.lanter.lan4gate;
 import org.lanter.lan4gate.Implementation.Communication.TCPCommunication;
 import org.lanter.lan4gate.Implementation.Communication.ICommunicationListener;
 import org.lanter.lan4gate.Implementation.Messages.Fields.ClassFieldValuesList;
+import org.lanter.lan4gate.Implementation.Messages.Interaction.Assembler.InteractionJSONAssembler;
+import org.lanter.lan4gate.Implementation.Messages.Interaction.Interaction;
+import org.lanter.lan4gate.Implementation.Messages.Interaction.InteractionBuilder;
 import org.lanter.lan4gate.Messages.OperationsList;
-import org.lanter.lan4gate.Implementation.Messages.Requests.Assembler.JSONAssembler;
+import org.lanter.lan4gate.Implementation.Messages.Requests.Assembler.RequestJSONAssembler;
 import org.lanter.lan4gate.Implementation.Messages.Requests.Request;
 import org.lanter.lan4gate.Implementation.Messages.Requests.RequestBuilder;
 import org.lanter.lan4gate.Implementation.Messages.Responses.Parser.JSONParser;
+import org.lanter.lan4gate.Messages.InteractionList;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -181,6 +185,32 @@ public class Lan4Gate implements ICommunicationListener {
      * Prepare and returns {@link IRequest} object.
      * Automatically fill ecrNumber, Type and mandatory fields
      *
+     * @param operation One of {@link InteractionList} enum values
+     *
+     * @return Prepared object, implements {@link IInteraction}
+     */
+    public IInteraction getPreparedInteraction(InteractionList operation) {
+        InteractionBuilder builder = new InteractionBuilder(mEcrNumber);
+        return builder.prepareInteraction(operation);
+    }
+
+    /**
+     * Send new interaction command to terminal
+     *
+     * @param interaction Prepared object, implements {@link IInteraction}
+     */
+    public void sendInteraction(IInteraction interaction){
+        InteractionJSONAssembler assembler = new InteractionJSONAssembler();
+        boolean result = assembler.assemble( (Interaction) interaction);
+        if(result) {
+            mTCPCommunication.addSendData(assembler.getJson());
+        }
+    }
+
+    /**
+     * Prepare and returns {@link IInteraction} object.
+     * Automatically fill mandatory fields
+     *
      * @param operation One of {@link OperationsList} enum values
      *
      * @return Prepared object, implements {@link IRequest}
@@ -196,12 +226,13 @@ public class Lan4Gate implements ICommunicationListener {
      * @param request Prepared object, implements {@link IRequest}
      */
     public void sendRequest(IRequest request){
-        JSONAssembler assembler = new JSONAssembler();
+        RequestJSONAssembler assembler = new RequestJSONAssembler();
         boolean result = assembler.assemble((Request) request);
         if(result) {
             mTCPCommunication.addSendData(assembler.getJson());
         }
     }
+
     @Override
     public void newData(String data) {
         JSONParser parser = new JSONParser();

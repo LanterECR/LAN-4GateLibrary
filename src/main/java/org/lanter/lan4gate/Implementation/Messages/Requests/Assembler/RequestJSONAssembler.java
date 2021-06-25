@@ -8,7 +8,7 @@ import org.lanter.lan4gate.Implementation.Messages.Requests.Request;
 
 import java.util.Set;
 
-public class JSONAssembler {
+public class RequestJSONAssembler {
     Request mRequest;
     String mJsonString;
     public boolean assemble(Request request) {
