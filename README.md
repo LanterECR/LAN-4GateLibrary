@@ -1,6 +1,44 @@
-###  Библиотека, реализующая протокол кассового взаимодействия LAN-4Gate компании "ЛАНТЕР"
+Реализация кассового протокола LAN-4Gate
+===========================================
 
-#### Для получения более подробной информации сгенерируйте Javadoc для данного проекта
+[![badge](https://img.shields.io/badge/document-javadoc-blue)](https://LanterECR.github.io/LAN-4GateLibrary/javadoc/index.html)
+[![Release](https://img.shields.io/badge/release-v1.0.0-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.0.0)
+
+## !!!ВНИМАНИЕ: Текущая версия библиотеки несовместима с версией 0.9.4 и ниже!!!
+### Для миграции прочтите [файл](Migration.md)
+
+
+Содержание
+----------
+1. [Описание](#Описание)
+2. [Требования](#Требования)
+3. [Зависимости](#Зависимости)
+4. [Подключение к проекту](#Подключение-к-проекту)
+5. [Использование](#Использование)
+
+Описание
+--------
+Библиотека реализует протокол кассового взаимодействия LAN-4Gate компании ЛАНТЕР.
+
+Подробная документация сгенерирована [Javadoc](https://docs.oracle.com/javase/8/docs/technotes/guides/javadoc/index.html). Доступна по [ссылке](https://LanterECR.github.io/LAN-4GateLibrary/javadoc/index.html) и в шапке файла
+
+**Библиотека находится в процессе миграции на Android SDK**
+
+
+Требования
+----------
+
+- Android 5.1 и выше
+- Java 1.7 и выше
+
+Зависимости
+-----------
+
+- [JSON-java](https://github.com/stleary/JSON-java). Используется из состава Android SDK
+
+
+Подключение к проекту
+---------------------
 
 #### Для подключения библиотеки необходимо:
 1.  добавить в репозитории репозиторий jitpack
@@ -15,65 +53,90 @@ allprojects {
 2. Добавить библиотеку в зависимости проекта.
 ```gradle
 dependencies {
-    implementation 'com.github.LanterECR:LAN-4GateLibrary:tag'
+    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.0.0'
 }
 ```
-Список тегов можно посмотреть в списке Branch -> Tags на главной странице репозитория. Необходимо использовать последний доступный тег.
 
-Для получения наиболее актуальной версии в качестве тега используйте ветку master.
+Использование
+-------------
 
-#### Пример взаимодействия с библиотекой:
-1. Реализовать интерфейс ```IResponseCallback```
+1. Реализовать интерфейсы колбэков:
+- ICommunicationCallback
 ```java
-class ResponseListener implements IResponseCallback {
-    @Override
-    public void newResponseMessage(IResponse response, Lan4Gate initiator) {
-        for (ResponseFieldsList field : response.getCurrentFieldsList()) {
-            // Код для обработки каждого поля
-        }
+import org.lanter.lan4gate.Callbacks.ICommunicationCallback;
+
+class CommunicationCallback implements ICommunicationCallback {
+    public void communicationStarted(ILan4Gate initiator) {
+        //Реакция на событие запуска соединения
     }
-}
+
+    public void communicationStopped(ILan4Gate initiator) {
+        //Реакция на событие остановки соединения
+    }
+
+    public void connected(ILan4Gate initiator) {
+        //Реакция на подключение к терминалу
+    }
+
+    public void disconnected(ILan4Gate initiator) {
+        //Реакция на отключение от терминала
+    }
+} 
 ```
-2. Реализовать интерфейс ```ICommunicationCallback```
+
+- IResponseCallback
 ```java
-class CommunicationListener implements ICommunicationCallback {
-    @Override
-    public void communicationStarted(Lan4Gate initiator) {
-        //код для обработки запуска соединения
-    }
+import org.lanter.lan4gate.Callbacks.IResponseCallback;
 
-    @Override
-    public void communicationStopped(Lan4Gate initiator) {
-        //код для обработки остановки соединения
+class ResponseCallback implements IResponseCallback {
+    public void newResponseMessage(IResponse response, ILan4Gate initiator) {
+        //Реакция на получение ответа от терминала
     }
-
-    @Override
-    public void connected(Lan4Gate initiator) {
-        //Код для обработки подключения. После данного события можно отправлять запросы
-    }
-
-    @Override
-    public void disconnected(Lan4Gate initiator) {
-        // код для обработки отключения
-    }
-}
+} 
 ```
-3. Настроить и запустить обертку протокола:
+
+- INotificationCallback
 ```java
-    //Создание слушателя для ответов терминала
-    ResponseListener responseListener = new ResponseListener();
-    //Создание слушателя для состояния сетевого взаимодействия
-    CommunicationListener communicationListener = new CommunicationListener();
-        
-    int ecrNumber = 1;
-    Lan4Gate gate = new Lan4Gate(ecrNumber);
-    //Добавление обратных вызовов в список слушателей
-    gate.addResponseCallback(responseListener);
-    gate.addCommunicationCallback(communicationListener);
-    //Установка порта взаимодействия
-    gate.setPort(20501);
-    //Запуск взаимодействия.
-    gate.start();
+import org.lanter.lan4gate.Callbacks.INotificationCallback;
+
+class NotificationCallback implements INotificationCallback {
+    public void newNotificationMessage(INotification notification, ILan4Gate initiator) {
+        //Реакция на получение уведомления
+    }
+} 
+```
+
+2. Создать соединение
+- TCP сервер, обслуживающий одно соединение по заданному порту 20500.
+Без указания параметра, будет использован порт по умолчанию - 20501.
+Порт взаимодействия согласуется при интеграции. Необходима возможность задавать вручную.
+```java
+import org.lanter.lan4gate.Communication.CommunicationFactory;
+
+ICommunication server = CommunicationFactory.getSingleTCPServer(20500);
+```
+
+- Декоратор, обслуживающий TCP сервер предыдущего пункта.
+Используется для определения длины сообщений. Использование данного параметра согласуется при интеграции
+```java
+import org.lanter.lan4gate.Communication.CommunicationFactory;
+
+ICommunication control = CommunicationFactory.getSizeControlDecorator(server);
+```
+
+3. Создать и запустить менеджер библиотеки ILan4Gate
+```java
+import org.lanter.lan4gate.Lan4GateFactory;
+
+int ecrNumber = 1;
+
+ILan4Gate gate = Lan4GateFactory.getLan4Gate(ecrNumber, control);
+
+gate.start();
+
+/*Логика перед остановкой*/
+
+gate.stop();
 ```
 4. Отправить запрос:
 ```java
@@ -86,5 +149,3 @@ class CommunicationListener implements ICommunicationCallback {
     //Отправить запрос
     gate.sendRequest(sale);
 ```
-##### Замечание: Метод start не блокирующий. Предполагается использование в цикле приложения.
-##### Замечание: Для отправки уведомления генерируется новый поток. Желательно, чтобы получатели уведомлений не блокировали дальнейшее выполнение кода.
