@@ -33,7 +33,7 @@ public class CommunicationFactory {
      * @param mainCommunication communication for decoration
      * @return null, if decorator cannot be create
      */
-    public static ICommunication getSizeControlProxy(ICommunication mainCommunication) {
+    public static ICommunication getSizeControlDecorator(ICommunication mainCommunication) {
         SizeControlDecorator decorator = null;
         if(mainCommunication != null) {
             decorator = new SizeControlDecorator(mainCommunication);
