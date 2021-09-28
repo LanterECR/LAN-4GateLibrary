@@ -741,7 +741,7 @@ public interface IResponse {
 
     /**
      * Returns the second line with organization info for print on receipt
-     * @return @return String, contains second line with organization info
+     * @return String, contains second line with organization info
      */
     String getReceiptLine2();
 
@@ -754,7 +754,7 @@ public interface IResponse {
 
     /**
      * Returns the third line with organization info for print on receipt
-     * @return @return String, contains third line with organization info
+     * @return String, contains third line with organization info
      */
     String getReceiptLine3();
 
@@ -768,7 +768,7 @@ public interface IResponse {
 
     /**
      * Returns the four line with organization info for print on receipt
-     * @return @return String, contains four line with organization info
+     * @return String, contains four line with organization info
      */
     String getReceiptLine4();
 
@@ -781,7 +781,7 @@ public interface IResponse {
 
     /**
      * Returns five line with organization info for print on receipt
-     * @return @return String, contains five line with organization info
+     * @return String, contains five line with organization info
      */
     String getReceiptLine5();
 

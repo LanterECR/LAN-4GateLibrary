@@ -56,11 +56,13 @@ public interface ICommunication {
      * Gets data.
      *
      * @return the data
+     * @throws IOException if data cannot be received
      */
     byte[] getData() throws IOException;
 
     /**
      * Do one iteration of communication loop.
+     * @throws IOException if loop cannot be executed
      */
     void doCommunication() throws IOException;
 }
