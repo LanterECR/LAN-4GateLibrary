@@ -1,9 +1,9 @@
 package org.lanter.lan4gate.Implementation.Messages.Interaction;
 
-import org.lanter.lan4gate.IInteraction;
+import org.lanter.lan4gate.Messages.Interaction.IInteraction;
 
-import org.lanter.lan4gate.Messages.Fields.InteractionFieldsList;
-import org.lanter.lan4gate.Messages.InteractionList;
+import org.lanter.lan4gate.Messages.Interaction.InteractionFieldsList;
+import org.lanter.lan4gate.Messages.Interaction.InteractionList;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,6 +41,7 @@ public class Interaction implements IInteraction {
         return mCode;
     }
 
+    @Override
     public void setCode(InteractionList code) {
         mCode = code;
         mFields.add(InteractionFieldsList.Code);
