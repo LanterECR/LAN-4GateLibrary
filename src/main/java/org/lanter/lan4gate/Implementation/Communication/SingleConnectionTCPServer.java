@@ -137,6 +137,10 @@ public class SingleConnectionTCPServer implements ICommunication {
                 }
             }
             mConnectionSelector.close();
+            mConnectionSelector = null;
+
+            mServerChannel.close();
+            mServerChannel = null;
         }
         catch (Exception ignored)
         {

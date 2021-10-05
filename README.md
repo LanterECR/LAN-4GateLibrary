@@ -2,7 +2,7 @@
 ===========================================
 
 [![badge](https://img.shields.io/badge/document-javadoc-blue)](https://LanterECR.github.io/LAN-4GateLibrary/javadoc/index.html)
-[![Release](https://img.shields.io/badge/release-v1.0.0-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.0.0)
+[![Release](https://img.shields.io/badge/release-v1.0.1-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary111111/releases/tag/v1.0.0)
 
 ## !!!ВНИМАНИЕ: Текущая версия библиотеки несовместима с версией 0.9.4 и ниже!!!
 ### Для миграции прочтите [файл](Migration.md)
@@ -28,8 +28,8 @@
 Требования
 ----------
 
-- Android 5.1 и выше
-- Java 1.7 и выше
+- Java 1.8
+- Gradle 6.1.1
 
 Зависимости
 -----------
@@ -59,6 +59,7 @@ dependencies {
 
 Использование
 -------------
+Ниже приведены фрагменты кода в качестве примера.
 
 1. Реализовать интерфейсы колбэков:
 - ICommunicationCallback
@@ -108,44 +109,46 @@ class NotificationCallback implements INotificationCallback {
 
 2. Создать соединение
 - TCP сервер, обслуживающий одно соединение по заданному порту 20500.
-Без указания параметра, будет использован порт по умолчанию - 20501.
-Порт взаимодействия согласуется при интеграции. Необходима возможность задавать вручную.
+  Без указания параметра, будет использован порт по умолчанию - 20501.
+  Порт взаимодействия согласуется при интеграции. Необходима возможность задавать вручную.
 ```java
 import org.lanter.lan4gate.Communication.CommunicationFactory;
+import org.lanter.lan4gate.Communication.ICommunication;
 
 ICommunication server = CommunicationFactory.getSingleTCPServer(20500);
 ```
 
 - Декоратор, обслуживающий TCP сервер предыдущего пункта.
-Используется для определения длины сообщений. Использование данного параметра согласуется при интеграции
+  Используется для определения длины сообщений. Использование данного параметра согласуется при интеграции
 ```java
 import org.lanter.lan4gate.Communication.CommunicationFactory;
+import org.lanter.lan4gate.Communication.ICommunication;
 
 ICommunication control = CommunicationFactory.getSizeControlDecorator(server);
 ```
 
-3. Создать и запустить менеджер библиотеки ILan4Gate
+3. Создать менеджер библиотеки ILan4Gate
 ```java
 import org.lanter.lan4gate.Lan4GateFactory;
+import org.lanter.lan4gate.ILan4Gate;
 
 int ecrNumber = 1;
 
 ILan4Gate gate = Lan4GateFactory.getLan4Gate(ecrNumber, control);
-
-gate.start();
-
-/*Логика перед остановкой*/
-
-gate.stop();
 ```
-4. Отправить запрос:
+
+4. Привязать колбэки к менеджеру
 ```java
-    //Получить предзаполненый объект запроса
-    IRequest sale = gate.getPreparedRequest(OperationsList.Sale);
-    //Установить параметры запроса
-    sale.setCurrencyCode(643);
-    sale.setAmount(100);
-    sale.setEcrMerchantNumber(1);
-    //Отправить запрос
-    gate.sendRequest(sale);
+gate.addCommunicationCallback(new CommunicationCallback());
+gate.addResponseCallback(new ResponseCallback());
+gate.addNotificationCallback(new NotificationCallback());
+```
+5. Запустить менеджер
+```java
+gate.start();
+```
+5. Остановить менеджер.
+```java
+gate.stop();
+gate = null;
 ```
