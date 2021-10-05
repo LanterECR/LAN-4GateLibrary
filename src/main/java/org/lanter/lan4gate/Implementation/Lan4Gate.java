@@ -38,7 +38,7 @@ public class Lan4Gate implements ILan4Gate, Runnable {
 
     @Override
     public void setEcrNumber(int ecrNumber) {
-        if(mEcrNumber != -1) {
+        if(ecrNumber > 0) {
             mEcrNumber = ecrNumber;
         }
     }
