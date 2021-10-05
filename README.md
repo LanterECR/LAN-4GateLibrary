@@ -34,7 +34,7 @@
 Зависимости
 -----------
 
-- [JSON-java](https://github.com/stleary/JSON-java). Используется из состава Android SDK
+- [JSON-java](https://github.com/stleary/JSON-java).
 
 
 Подключение к проекту
