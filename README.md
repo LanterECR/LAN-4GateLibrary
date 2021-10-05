@@ -53,7 +53,7 @@ allprojects {
 2. Добавить библиотеку в зависимости проекта.
 ```gradle
 dependencies {
-    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.0.0'
+    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.0.1'
 }
 ```
 
