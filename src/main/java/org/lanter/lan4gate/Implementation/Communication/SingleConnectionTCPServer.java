@@ -33,6 +33,7 @@ public class SingleConnectionTCPServer implements ICommunication {
 
     @Override
     public void closeCommunication() throws IOException {
+        closeClientConnection(mRegisteredConnection);
         stopSelector();
     }
 
@@ -154,11 +155,12 @@ public class SingleConnectionTCPServer implements ICommunication {
         mRegisteredConnection = null;
     }
     private void closeConnection(SelectionKey key) throws IOException{
-        if (key.channel().isRegistered())
-        {
-            key.cancel();
+        if(key != null) {
+            if (key.channel().isRegistered()) {
+                key.cancel();
+            }
+            key.channel().close();
         }
-        key.channel().close();
     }
     private void addConnection(SelectionKey key) throws IOException {
         if(allowRegisterConnection()) {
