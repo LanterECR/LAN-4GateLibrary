@@ -2,7 +2,7 @@
 ===========================================
 
 [![badge](https://img.shields.io/badge/document-javadoc-blue)](https://LanterECR.github.io/LAN-4GateLibrary/javadoc/index.html)
-[![Release](https://img.shields.io/badge/release-v1.0.1-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.0.1)
+[![Release](https://img.shields.io/badge/release-v1.0.3-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.0.3)
 
 ## !!!ВНИМАНИЕ: Текущая версия библиотеки несовместима с версией 0.9.4 и ниже!!!
 ### Для миграции прочтите [файл](Migration.md)
@@ -53,7 +53,7 @@ allprojects {
 2. Добавить библиотеку в зависимости проекта.
 ```gradle
 dependencies {
-    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.0.1'
+    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.0.3'
 }
 ```
 
