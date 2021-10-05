@@ -143,7 +143,13 @@ public enum NotificationsList {
      * PIN enter timeout expired
      */
     PinEnterTimeout(51),
-    QrShowing(52);
+    QrShowing(52),
+    ConfigError(53),
+    KeyEntryIsNotAllowed(54),
+    PinSymbolEntered(55),
+    LookForDevice(56),
+    DeclinedBonus(57),
+    CardReadingSuccessWait(58);
 
     private final int mValue;
     private final static Map<Integer, NotificationsList> mStaticValuesMap = new HashMap<>();
