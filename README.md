@@ -2,7 +2,7 @@
 ===========================================
 
 [![badge](https://img.shields.io/badge/document-javadoc-blue)](https://LanterECR.github.io/LAN-4GateLibrary/javadoc/index.html)
-[![Release](https://img.shields.io/badge/release-v1.0.2-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.0.2)
+[![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.1.0)
 
 ## !!!ВНИМАНИЕ: Текущая версия библиотеки несовместима с версией 0.9.4 и ниже!!!
 ### Для миграции прочтите [файл](Migration.md)
@@ -53,7 +53,7 @@ allprojects {
 2. Добавить библиотеку в зависимости проекта.
 ```gradle
 dependencies {
-    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.0.2'
+    implementation 'com.github.LanterECR:LAN-4GateLibrary:v1.1.0'
 }
 ```
 
@@ -115,7 +115,17 @@ class NotificationCallback implements INotificationCallback {
 import org.lanter.lan4gate.Communication.CommunicationFactory;
 import org.lanter.lan4gate.Communication.ICommunication;
 
-ICommunication server = CommunicationFactory.getSingleTCPServer(20500);
+ICommunication communication = CommunicationFactory.getSingleTCPServer(20500);
+```
+
+- TCP клиент на с портом и адресом по умолчанию.
+  Без указания параметров, будет использован порт и адрес по умолчанию - 127.0.0.1:20501.
+  Порт и адрес взаимодействия согласуется при интеграции. Необходима возможность задавать вручную.
+```java
+import org.lanter.lan4gate.Communication.CommunicationFactory;
+import org.lanter.lan4gate.Communication.ICommunication;
+
+ICommunication communication = CommunicationFactory.getTCPClient();
 ```
 
 - Декоратор, обслуживающий TCP сервер предыдущего пункта.
@@ -124,7 +134,8 @@ ICommunication server = CommunicationFactory.getSingleTCPServer(20500);
 import org.lanter.lan4gate.Communication.CommunicationFactory;
 import org.lanter.lan4gate.Communication.ICommunication;
 
-ICommunication control = CommunicationFactory.getSizeControlDecorator(server);
+ICommunication control = CommunicationFactory.getSizeControlDecorator(communication);
+
 ```
 
 3. Создать менеджер библиотеки ILan4Gate
