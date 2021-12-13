@@ -14,6 +14,9 @@ public class PrintSummaryReport extends Response {
         addOptionalFields(ResponseFieldsList.TotalAmount);
         addOptionalFields(ResponseFieldsList.CurrencyCode);
         addOptionalFields(ResponseFieldsList.TerminalDateTime);
+        addOptionalFields(ResponseFieldsList.SalesAmount);
+        addOptionalFields(ResponseFieldsList.VoidAmount);
+        addOptionalFields(ResponseFieldsList.RefundAmount);
         addOptionalFields(ResponseFieldsList.SalesCount);
         addOptionalFields(ResponseFieldsList.VoidCount);
         addOptionalFields(ResponseFieldsList.RefundCount);

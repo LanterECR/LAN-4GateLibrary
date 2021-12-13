@@ -628,6 +628,47 @@ public interface IResponse {
     void setCDAResult(String CDAResult);
 
     /**
+     * Return total sales amount from last settlement
+     *
+     * @return Sales amount from last settlement
+     */
+
+    long getSalesAmount();
+
+    /**
+     * Set total sales amount from last settlement
+     * @param amount Value in range [0, 999999999999]
+     */
+    void setSalesAmount(long amount);
+
+    /**
+     * Return total void amount from last settlement
+     *
+     * @return Sales void from last settlement
+     */
+
+    long getVoidAmount();
+
+    /**
+     * Set total void amount from last settlement
+     * @param amount Value in range [0, 999999999999]
+     */
+    void setVoidAmount(long amount);
+
+    /**
+     * Return total refund amount from last settlement
+     *
+     * @return Sales refund from last settlement
+     */
+    long getRefundAmount();
+
+    /**
+     * Set total sales amount from last settlement
+     * @param amount Value in range [0, 999999999999]
+     */
+    void setRefundAmount(long amount);
+
+    /**
      * Returns sales count, executed after last settlement
      *
      * @return Sales count after last settlement
