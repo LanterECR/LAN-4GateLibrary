@@ -196,6 +196,15 @@ public class JSONResponseParser {
                         getFieldCDAResult(objectField, responseObject);
                         break;
                     }
+                    case SalesAmount:
+                        getFieldSalesAmount(objectField, responseObject);
+                        break;
+                    case VoidAmount:
+                        getFieldVoidAmount(objectField, responseObject);
+                        break;
+                    case RefundAmount:
+                        getFieldRefundAmount(objectField, responseObject);
+                        break;
                     case SalesCount : {
                         getFieldSalesCount (objectField, responseObject);
                         break;
@@ -244,10 +253,25 @@ public class JSONResponseParser {
                         getFieldReceiptLine5(objectField, responseObject);
                         break;
                     }
+                    case FinalizationRequired:
+                        getFieldFinalizationRequired(objectField, responseObject);
+                        break;
+                    case ApplicationLabel:
+                        getFieldApplicationLabel(objectField, responseObject);
+                        break;
                 }//switch
             }//object has field
         }//foreach
     }//getFields
+
+    private static void getFieldApplicationLabel(JSONObject objectField, IResponse responseObject) {
+        String receiptReference = objectField.optString(ResponseFieldsList.ApplicationLabel.getString());
+        if(!receiptReference.isEmpty())
+        {
+            responseObject.setApplicationLabel(receiptReference);
+        }
+    }
+
     private static void getFieldEcrNumber(JSONObject objectField, IResponse responseObject) {
         int ecrNumber = objectField.optInt(ResponseFieldsList.EcrNumber.getString(), -1);
         if(ecrNumber != -1)
@@ -521,6 +545,33 @@ public class JSONResponseParser {
             responseObject.setCDAResult(cdaResult);
         }
     }
+
+
+
+    private static void getFieldSalesAmount(JSONObject objectField, IResponse responseObject) {
+        long salesAmount = objectField.optLong(ResponseFieldsList.SalesAmount.getString(), -1);
+        if(salesAmount != -1)
+        {
+            responseObject.setSalesAmount(salesAmount);
+        }
+    }
+
+    private static void getFieldVoidAmount(JSONObject objectField, IResponse responseObject) {
+        long voidAmount = objectField.optLong(ResponseFieldsList.VoidAmount.getString(), -1);
+        if(voidAmount != -1)
+        {
+            responseObject.setVoidAmount(voidAmount);
+        }
+    }
+
+    private static void getFieldRefundAmount(JSONObject objectField, IResponse responseObject) {
+        long refundAmount = objectField.optLong(ResponseFieldsList.RefundAmount.getString(), -1);
+        if(refundAmount != -1)
+        {
+            responseObject.setRefundAmount(refundAmount);
+        }
+    }
+
     private static void getFieldSalesCount (JSONObject objectField, IResponse responseObject) {
         int salesCount = objectField.optInt(ResponseFieldsList.SalesCount.getString(), -1);
         if(salesCount != -1)
@@ -607,5 +658,10 @@ public class JSONResponseParser {
             }
         }
         return array;
+    }
+
+
+    private static void getFieldFinalizationRequired(JSONObject objectField, IResponse responseObject) {
+        responseObject.setFinalizationRequired(objectField.getBoolean(ResponseFieldsList.FinalizationRequired.getString()));
     }
 }

@@ -50,6 +50,9 @@ public class Response implements IResponse {
     private String mCID;
     private String mKVR;
     private String mCDAResult;
+    private long mSalesAmount;
+    private long mVoidAmount;
+    private long mRefundAmount;
     private int mSalesCount;
     private int mVoidCount;
     private int mRefundCount;
@@ -804,6 +807,39 @@ public class Response implements IResponse {
     public void setCDAResult(String CDAResult) {
         mCDAResult = CDAResult;
         mCurrentFields.add(ResponseFieldsList.CDAResult);
+    }
+
+    @Override
+    public long getSalesAmount() {
+        return mSalesAmount;
+    }
+
+    @Override
+    public void setSalesAmount(long amount) {
+        mSalesAmount = amount;
+        mCurrentFields.add(ResponseFieldsList.SalesAmount);
+    }
+
+    @Override
+    public long getVoidAmount() {
+        return mVoidAmount;
+    }
+
+    @Override
+    public void setVoidAmount(long amount) {
+        mVoidAmount = amount;
+        mCurrentFields.add(ResponseFieldsList.VoidAmount);
+    }
+
+    @Override
+    public long getRefundAmount() {
+        return mRefundAmount;
+    }
+
+    @Override
+    public void setRefundAmount(long amount) {
+        mRefundAmount = amount;
+        mCurrentFields.add(ResponseFieldsList.RefundAmount);
     }
 
     public int getSalesCount() {
