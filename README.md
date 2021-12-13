@@ -2,6 +2,7 @@
 ===========================================
 
 [![badge](https://img.shields.io/badge/document-javadoc-blue)](https://LanterECR.github.io/LAN-4GateLibrary/javadoc/index.html)
+
 [![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibrary/releases/tag/v1.1.0)
 
 ## !!!ВНИМАНИЕ: Текущая версия библиотеки несовместима с версией 0.9.4 и ниже!!!
@@ -34,7 +35,7 @@
 Зависимости
 -----------
 
-- [JSON-java](https://github.com/stleary/JSON-java). Используется из состава Android SDK
+- [JSON-java](https://github.com/stleary/JSON-java).
 
 
 Подключение к проекту
