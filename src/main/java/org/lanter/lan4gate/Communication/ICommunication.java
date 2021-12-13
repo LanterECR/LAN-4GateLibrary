@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public interface ICommunication {
     /**
-     * Open communication. It may be connect, file open, etc.
+     * Open communication. It maybe TCP connection, file open, etc.
      * @throws IOException if communication cannot be opened
      */
     void openCommunication() throws IOException;
@@ -27,7 +27,7 @@ public interface ICommunication {
 
     /**
      * Initiate connecting for current connection
-     * @throws IOException if the connection cannot be connect due to an error
+     * @throws IOException if the connection cannot connect due to an error
      */
     void connect() throws IOException;
 
@@ -48,7 +48,7 @@ public interface ICommunication {
      * Send data over connection
      *
      * @param data data for send
-     * @throws IOException if cannot send data due to an error
+     * @throws IOException if data cannot send data due to an error
      */
     void sendData(byte[] data) throws IOException;
 
