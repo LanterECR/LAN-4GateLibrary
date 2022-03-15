@@ -19,7 +19,7 @@ public class JSONInteractionBuilder {
     }
     private static void addObjectFields(JSONObject object, IInteraction interaction) throws JSONException {
         if(interaction != null) {
-            object.put(InteractionFieldsList.Code.getString(), interaction.getCode());
+            object.put(InteractionFieldsList.Code.getString(), interaction.getCode().getNumber());
         }
     }
 }
